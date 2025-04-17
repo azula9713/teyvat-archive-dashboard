@@ -77,11 +77,7 @@ export function BuildForm({
           ]}
         />
 
-        <BasicTab
-          formData={formData}
-          handleChange={handleChange}
-          characters={characters}
-        />
+        <BasicTab formData={formData} handleChange={handleChange} />
 
         <WeaponTab
           formData={formData}
