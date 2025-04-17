@@ -34,7 +34,7 @@ export default function BasicTab({
               id="buildName"
               value={formData.buildName}
               onChange={(e) => handleChange("buildName", e.target.value)}
-              placeholder="e.g., DPS Hu Tao"
+              placeholder="eg: DPS Hu Tao"
               required
             />
           </div>
@@ -57,6 +57,17 @@ export default function BasicTab({
                 ))}
               </SelectContent>
             </Select>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="updatedPatch">Updated Patch</Label>
+            <Input
+              id="updatedPatch"
+              value={formData.updatedPatch}
+              onChange={(e) => handleChange("updatedPatch", e.target.value)}
+              placeholder="eg: 3.6"
+              required
+            />
           </div>
 
           <div className="space-y-2 sm:col-span-2">

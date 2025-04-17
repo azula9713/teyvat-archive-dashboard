@@ -1,41 +1,42 @@
 export interface ICharacterBuildInput {
-  buildName: string
-  characterId: string
-  lastUpdate: string
+  buildName: string;
+  characterId: string;
+  lastUpdate: string;
+  updatedPatch: string;
   weapons: {
-    weaponId: string
-    weaponName: string
-    weaponIcon: string
-    refinement: number | null
-    rank: number
-  }[]
+    weaponId: string;
+    weaponName: string;
+    weaponIcon: string;
+    refinement: number | null;
+    rank: number;
+  }[];
   artifacts: {
-    mainArtifactSetId: string
-    isFullSet: boolean
-    secondaryArtifactSetId?: string // For 2pc+2pc combinations
+    mainArtifactSetId: string;
+    isFullSet: boolean;
+    secondaryArtifactSetId?: string; // For 2pc+2pc combinations
     alternativeSets?: {
-      mainArtifactSetId: string
-      isFullSet: boolean
-      secondaryArtifactSetId?: string
-      rank: number
-    }[]
-    rank: number
-  }[]
+      mainArtifactSetId: string;
+      isFullSet: boolean;
+      secondaryArtifactSetId?: string;
+      rank: number;
+    }[];
+    rank: number;
+  }[];
   mainStats: {
-    sands: string[]
-    goblet: string[]
-    circlet: string[]
-    notes?: string
-  }
+    sands: string[];
+    goblet: string[];
+    circlet: string[];
+    notes?: string;
+  };
   subStats: {
-    stats: string[]
-    notes?: string
-  }
+    stats: string[];
+    notes?: string;
+  };
   talentPriority: {
-    normalAttack: number
-    elementalSkill: number
-    elementalBurst: number
-    notes?: string
-  }
-  notes?: string
+    normalAttack: number;
+    elementalSkill: number;
+    elementalBurst: number;
+    notes?: string;
+  };
+  notes?: string;
 }

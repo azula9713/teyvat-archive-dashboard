@@ -4,6 +4,7 @@ import { ICharacterBuildInput } from "@/types/build";
 const emptyBuild: ICharacterBuildInput = {
   characterId: "",
   buildName: "",
+  updatedPatch: "",
   weapons: [
     {
       weaponId: "",

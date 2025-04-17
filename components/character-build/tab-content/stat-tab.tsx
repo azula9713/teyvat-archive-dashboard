@@ -26,7 +26,7 @@ export default function StatTab({
               id="sands"
               value={formData.mainStats.sands.join(", ")}
               onChange={(e) => handleMainStatChange("sands", e.target.value)}
-              placeholder="e.g., ATK%, ER%, HP%"
+              placeholder="eg: ATK%, ER%, HP%"
             />
             <p className="text-xs text-muted-foreground">
               Separate multiple options with commas
@@ -39,7 +39,7 @@ export default function StatTab({
               id="goblet"
               value={formData.mainStats.goblet.join(", ")}
               onChange={(e) => handleMainStatChange("goblet", e.target.value)}
-              placeholder="e.g., Pyro DMG%, ATK%"
+              placeholder="eg: Pyro DMG%, ATK%"
             />
             <p className="text-xs text-muted-foreground">
               Separate multiple options with commas
@@ -52,7 +52,7 @@ export default function StatTab({
               id="circlet"
               value={formData.mainStats.circlet.join(", ")}
               onChange={(e) => handleMainStatChange("circlet", e.target.value)}
-              placeholder="e.g., CRIT Rate, CRIT DMG"
+              placeholder="eg: CRIT Rate, CRIT DMG"
             />
             <p className="text-xs text-muted-foreground">
               Separate multiple options with commas
@@ -65,7 +65,7 @@ export default function StatTab({
               id="subStats"
               value={formData.subStats.stats.join(", ")}
               onChange={(e) => handleSubStatsChange(e.target.value)}
-              placeholder="e.g., CRIT Rate, CRIT DMG, ATK%"
+              placeholder="eg: CRIT Rate, CRIT DMG, ATK%"
             />
             <p className="text-xs text-muted-foreground">
               List in order of priority, separated by commas
