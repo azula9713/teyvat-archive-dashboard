@@ -16,7 +16,7 @@ interface DashboardLayoutProps {
 
 export function DashboardLayout({ children }: Readonly<DashboardLayoutProps>) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-hidden max-w-svw">
       <SidebarProvider>
         <Sidebar>
           <Navigation />

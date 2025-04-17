@@ -1,8 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { BarChart3, FileText, Home, Settings, Users, GalleryVerticalEnd } from "lucide-react"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  BarChart3,
+  FileText,
+  Home,
+  Settings,
+  Users,
+  GalleryVerticalEnd,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -16,10 +23,10 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 export function DashboardSidebar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <SidebarProvider>
@@ -32,8 +39,10 @@ export function DashboardSidebar() {
                   <GalleryVerticalEnd className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Genshin Build Manager</span>
-                  <span className="text-xs text-muted-foreground">Admin Dashboard</span>
+                  <span className="font-semibold">Teyvat Archive Admin</span>
+                  <span className="text-xs text-muted-foreground">
+                    Admin Dashboard
+                  </span>
                 </div>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -53,7 +62,12 @@ export function DashboardSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild isActive={pathname === "/builds" || pathname.startsWith("/builds/")}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={
+                      pathname === "/builds" || pathname.startsWith("/builds/")
+                    }
+                  >
                     <Link href="/builds">
                       <FileText className="mr-2 h-4 w-4" />
                       Builds
@@ -84,7 +98,10 @@ export function DashboardSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild isActive={pathname === "/settings"}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={pathname === "/settings"}
+                  >
                     <Link href="/settings">
                       <Settings className="mr-2 h-4 w-4" />
                       Settings
@@ -98,5 +115,5 @@ export function DashboardSidebar() {
         <SidebarRail />
       </Sidebar>
     </SidebarProvider>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { ModeToggle } from "@/components/mode-toggle"
-import { UserNav } from "@/components/user-nav"
-import { SidebarTrigger } from "@/components/ui/sidebar"
+import { ModeToggle } from "@/components/mode-toggle";
+import { UserNav } from "@/components/user-nav";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export function Header() {
   return (
@@ -10,7 +10,7 @@ export function Header() {
       <div className="flex h-16 items-center justify-between px-4">
         <div className="flex items-center">
           <SidebarTrigger className="mr-2" />
-          <h1 className="text-xl font-semibold md:hidden">Genshin Build Manager</h1>
+          <h1 className="text-xl font-semibold md:hidden">Teyvat Archive</h1>
         </div>
         <div className="flex items-center gap-4">
           <ModeToggle />
@@ -18,5 +18,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
