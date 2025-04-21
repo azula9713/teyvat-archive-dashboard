@@ -10,3 +10,14 @@ export const fetchAllCharacters = async () => {
     throw error;
   }
 };
+
+export const fetchAllWeapons = async () => {
+  console.log("Fetching weapons");
+  try {
+    const response = await httpClient.get("/weapons/all");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching weapons:", error);
+    throw error;
+  }
+};

@@ -1,5 +1,9 @@
-import { fetchAllCharacters } from "@/services/apis/fetch-all-characters";
+import {
+  fetchAllCharacters,
+  fetchAllWeapons,
+} from "@/services/apis/fetch-all-characters";
 import { IBaseCharacter, ICharacter } from "@/types/character";
+import { IBaseWeapon } from "@/types/weapon";
 import useSWR from "swr";
 
 export const useCharacterData = () => {
@@ -15,6 +19,20 @@ export const useCharacterData = () => {
 
   return {
     characters,
+    error,
+    isLoading,
+  };
+};
+
+export const useWeaponData = () => {
+  const { data, error, isLoading } = useSWR("/weapons/all", fetchAllWeapons);
+
+  const weapons: IBaseWeapon[] = data?.map((weapon: IBaseWeapon) => ({
+    ...weapon,
+  }));
+
+  return {
+    weapons,
     error,
     isLoading,
   };

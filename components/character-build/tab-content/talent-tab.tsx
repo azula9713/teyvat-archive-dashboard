@@ -13,16 +13,15 @@ import { ICharacterBuildInput } from "@/types/build";
 import React from "react";
 
 type Props = {
-  formData: ICharacterBuildInput;
-  handleTalentChange: (field: string, value: number) => void;
-  setFormData: React.Dispatch<React.SetStateAction<ICharacterBuildInput>>;
+  // formData: ICharacterBuildInput;
+  // handleTalentChange: (field: string, value: number) => void;
+  // setFormData: React.Dispatch<React.SetStateAction<ICharacterBuildInput>>;
 };
 
-export default function TalentTab({
-  formData,
-  handleTalentChange,
-  setFormData,
-}: Readonly<Props>) {
+export default function TalentTab({}: // formData,
+// handleTalentChange,
+// setFormData,
+Readonly<Props>) {
   return (
     <TabsContent value="talents" className="space-y-4 mt-6">
       <Card className="p-6">
@@ -30,10 +29,10 @@ export default function TalentTab({
           <div className="space-y-2">
             <Label htmlFor="normalAttack">Normal Attack Priority</Label>
             <Select
-              value={formData.talentPriority.normalAttack.toString()}
-              onValueChange={(value) =>
-                handleTalentChange("normalAttack", Number.parseInt(value))
-              }
+            // value={formData.talentPriority.normalAttack.toString()}
+            // onValueChange={(value) =>
+            //   handleTalentChange("normalAttack", Number.parseInt(value))
+            // }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select priority" />
@@ -49,10 +48,10 @@ export default function TalentTab({
           <div className="space-y-2">
             <Label htmlFor="elementalSkill">Elemental Skill Priority</Label>
             <Select
-              value={formData.talentPriority.elementalSkill.toString()}
-              onValueChange={(value) =>
-                handleTalentChange("elementalSkill", Number.parseInt(value))
-              }
+            // value={formData.talentPriority.elementalSkill.toString()}
+            // onValueChange={(value) =>
+            //   handleTalentChange("elementalSkill", Number.parseInt(value))
+            // }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select priority" />
@@ -68,10 +67,10 @@ export default function TalentTab({
           <div className="space-y-2">
             <Label htmlFor="elementalBurst">Elemental Burst Priority</Label>
             <Select
-              value={formData.talentPriority.elementalBurst.toString()}
-              onValueChange={(value) =>
-                handleTalentChange("elementalBurst", Number.parseInt(value))
-              }
+            // value={formData.talentPriority.elementalBurst.toString()}
+            // onValueChange={(value) =>
+            //   handleTalentChange("elementalBurst", Number.parseInt(value))
+            // }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select priority" />
@@ -88,16 +87,16 @@ export default function TalentTab({
             <Label htmlFor="talentNotes">Talent Notes</Label>
             <Textarea
               id="talentNotes"
-              value={formData.talentPriority.notes ?? ""}
-              onChange={(e) => {
-                setFormData((prev: ICharacterBuildInput) => ({
-                  ...prev,
-                  talentPriority: {
-                    ...prev.talentPriority,
-                    notes: e.target.value,
-                  },
-                }));
-              }}
+              // value={formData.talentPriority.notes ?? ""}
+              // onChange={(e) => {
+              //   setFormData((prev: ICharacterBuildInput) => ({
+              //     ...prev,
+              //     talentPriority: {
+              //       ...prev.talentPriority,
+              //       notes: e.target.value,
+              //     },
+              //   }));
+              // }}
               placeholder="Any notes about talent priorities..."
               rows={3}
             />

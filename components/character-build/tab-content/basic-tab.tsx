@@ -15,11 +15,11 @@ import { ICharacterBuildInput } from "@/types/build";
 import Image from "next/image";
 
 type Props = {
-  formData: ICharacterBuildInput;
-  handleChange: (field: string, value: string) => void;
+  // formData: ICharacterBuildInput;
+  // handleChange: (field: string, value: string) => void;
 };
 
-export default function BasicTab({ formData, handleChange }: Readonly<Props>) {
+export default function BasicTab({}: Readonly<Props>) {
   const { characters, error, isLoading } = useCharacterData();
 
   if (isLoading) {
@@ -38,8 +38,8 @@ export default function BasicTab({ formData, handleChange }: Readonly<Props>) {
             <Label htmlFor="buildName">Build Name</Label>
             <Input
               id="buildName"
-              value={formData.buildName}
-              onChange={(e) => handleChange("buildName", e.target.value)}
+              // value={formData.buildName}
+              // onChange={(e) => handleChange("buildName", e.target.value)}
               placeholder="eg: DPS Hu Tao"
               required
             />
@@ -48,8 +48,8 @@ export default function BasicTab({ formData, handleChange }: Readonly<Props>) {
           <div className="space-y-2">
             <Label htmlFor="character">Character</Label>
             <Select
-              value={formData.characterId}
-              onValueChange={(value) => handleChange("characterId", value)}
+              // value={formData.characterId}
+              // onValueChange={(value) => handleChange("characterId", value)}
               required
             >
               <SelectTrigger>
@@ -85,8 +85,8 @@ export default function BasicTab({ formData, handleChange }: Readonly<Props>) {
             <Label htmlFor="updatedPatch">Updated Patch</Label>
             <Input
               id="updatedPatch"
-              value={formData.updatedPatch}
-              onChange={(e) => handleChange("updatedPatch", e.target.value)}
+              // value={formData.updatedPatch}
+              // onChange={(e) => handleChange("updatedPatch", e.target.value)}
               placeholder="eg: 3.6"
               required
             />
@@ -96,8 +96,8 @@ export default function BasicTab({ formData, handleChange }: Readonly<Props>) {
             <Label htmlFor="notes">Notes</Label>
             <Textarea
               id="notes"
-              value={formData.notes ?? ""}
-              onChange={(e) => handleChange("notes", e.target.value)}
+              // value={formData.notes ?? ""}
+              // onChange={(e) => handleChange("notes", e.target.value)}
               placeholder="Any general notes about this build..."
               rows={4}
             />

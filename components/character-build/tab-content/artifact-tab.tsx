@@ -15,32 +15,31 @@ import { Plus, Trash2 } from "lucide-react";
 import React from "react";
 
 type Props = {
-  formData: ICharacterBuildInput;
-  handleArtifactSetTypeChange: (value: boolean) => void;
-  handleArtifactChange: (field: string, value: string) => void;
-  handleAlternativeSetTypeChange: (index: number, value: boolean) => void;
-  handleAlternativeArtifactChange: (
-    index: number,
-    field: string,
-    value: string
-  ) => void;
-  removeAlternativeArtifactSet: (index: number) => void;
-  addAlternativeArtifactSet: () => void;
-  artifactSets: any[];
-  alternativeArtifacts: any[];
+  // formData: ICharacterBuildInput;
+  // handleArtifactSetTypeChange: (value: boolean) => void;
+  // handleArtifactChange: (field: string, value: string) => void;
+  // handleAlternativeSetTypeChange: (index: number, value: boolean) => void;
+  // handleAlternativeArtifactChange: (
+  //   index: number,
+  //   field: string,
+  //   value: string
+  // ) => void;
+  // removeAlternativeArtifactSet: (index: number) => void;
+  // addAlternativeArtifactSet: () => void;
+  // artifactSets: any[];
+  // alternativeArtifacts: any[];
 };
 
-export default function ArtifactTab({
-  formData,
-  handleArtifactSetTypeChange,
-  handleArtifactChange,
-  handleAlternativeSetTypeChange,
-  handleAlternativeArtifactChange,
-  removeAlternativeArtifactSet,
-  addAlternativeArtifactSet,
-  artifactSets,
-  alternativeArtifacts,
-}: Readonly<Props>) {
+export default function ArtifactTab({}: // formData,
+// handleArtifactSetTypeChange,
+// handleArtifactChange,
+// handleAlternativeSetTypeChange,
+// handleAlternativeArtifactChange,
+// removeAlternativeArtifactSet,
+// addAlternativeArtifactSet,
+// artifactSets,
+// alternativeArtifacts,
+Readonly<Props>) {
   return (
     <TabsContent value="artifacts" className="space-y-4 mt-6">
       <Card className="p-6">
@@ -51,10 +50,10 @@ export default function ArtifactTab({
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <RadioGroup
-                  value={formData.artifacts[0].isFullSet ? "full" : "mixed"}
-                  onValueChange={(value) =>
-                    handleArtifactSetTypeChange(value === "full")
-                  }
+                  // value={formData.artifacts[0].isFullSet ? "full" : "mixed"}
+                  // onValueChange={(value) =>
+                  //   handleArtifactSetTypeChange(value === "full")
+                  // }
                   className="flex space-x-4"
                 >
                   <div className="flex items-center space-x-2">
@@ -68,7 +67,7 @@ export default function ArtifactTab({
                 </RadioGroup>
               </div>
 
-              {formData.artifacts[0].isFullSet ? (
+              {/* {formData.artifacts[0].isFullSet ? (
                 <div className="space-y-2">
                   <Label htmlFor="mainArtifactSet">4pc Artifact Set</Label>
                   <Select
@@ -135,7 +134,7 @@ export default function ArtifactTab({
                     </Select>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 
@@ -144,7 +143,7 @@ export default function ArtifactTab({
               <h3 className="text-lg font-medium">Alternative Artifact Sets</h3>
             </div>
 
-            {alternativeArtifacts.length === 0 ? (
+            {/* {alternativeArtifacts.length === 0 ? (
               <p className="text-sm text-muted-foreground">
                 No alternative sets added yet.
               </p>
@@ -280,12 +279,12 @@ export default function ArtifactTab({
                   )}
                 </div>
               ))
-            )}
+            )} */}
 
             <Button
               type="button"
               variant="outline"
-              onClick={addAlternativeArtifactSet}
+              // onClick={addAlternativeArtifactSet}
             >
               <Plus className="mr-2 h-4 w-4" />
               Add Alternative Artifact Set
