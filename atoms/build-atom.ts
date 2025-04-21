@@ -21,131 +21,63 @@ const emptyBuild: ICharacterBuildInput = {
     elementalBurst: 1,
   },
   notes: "",
-  weapons: [],
-  artifacts: [],
+  weapons: [
+    {
+      weaponId: "",
+      weaponRank: 1,
+      weaponRefinement: 0,
+    },
+  ],
+  artifacts: [
+    {
+      rank: 1,
+      artifactSets: [
+        {
+          setId: "",
+          piecesCount: 0,
+        },
+      ],
+    },
+  ],
 };
 
-export const buildAtom = atomWithStorage("characterBuild", emptyBuild);
-
 // Read functions
-export const authorIdAtom = atom((get) => get(buildAtom).authorId);
-export const characterIdAtom = atom((get) => get(buildAtom).characterId);
-export const buildNameAtom = atom((get) => get(buildAtom).buildName);
-export const lastUpdatedPatch = atom((get) => get(buildAtom).lastUpdatedPatch);
-export const mainStatsAtom = atom((get) => get(buildAtom).mainStats);
-export const subStatsAtom = atom((get) => get(buildAtom).subStats);
-export const talentPriorityAtom = atom((get) => get(buildAtom).talentPriority);
-export const notesAtom = atom((get) => get(buildAtom).notes);
-export const weaponsAtom = atom((get) => get(buildAtom).weapons);
-export const artifactsAtom = atom((get) => get(buildAtom).artifacts);
+export const authorIdAtom = atomWithStorage("authorId", emptyBuild.authorId);
+export const characterIdAtom = atomWithStorage(
+  "characterId",
+  emptyBuild.characterId
+);
+export const buildNameAtom = atomWithStorage("buildName", emptyBuild.buildName);
+export const lastUpdatedPatchAtom = atomWithStorage(
+  "lastUpdatedPatch",
+  emptyBuild.lastUpdatedPatch
+);
+export const mainStatsAtom = atomWithStorage("mainStats", emptyBuild.mainStats);
+export const subStatsAtom = atomWithStorage("subStats", emptyBuild.subStats);
+export const talentPriorityAtom = atomWithStorage(
+  "talentPriority",
+  emptyBuild.talentPriority
+);
+export const notesAtom = atomWithStorage("notes", emptyBuild.notes);
+export const weaponsAtom = atomWithStorage("weapons", emptyBuild.weapons);
+export const artifactsAtom = atomWithStorage("artifacts", emptyBuild.artifacts);
 
-// Write functions
-export const updateAuthorIdAtom = atom(null, (get, set, authorId: string) => {
-  set(buildAtom, {
-    ...get(buildAtom),
-    authorId,
-  });
+export const characterWeaponTypeAtom = atomWithStorage(
+  "characterWeaponType",
+  ""
+);
+
+export const buildAtom = atom((get) => {
+  return {
+    authorId: get(authorIdAtom),
+    characterId: get(characterIdAtom),
+    buildName: get(buildNameAtom),
+    lastUpdatedPatch: get(lastUpdatedPatchAtom),
+    mainStats: get(mainStatsAtom),
+    subStats: get(subStatsAtom),
+    talentPriority: get(talentPriorityAtom),
+    notes: get(notesAtom),
+    weapons: get(weaponsAtom),
+    artifacts: get(artifactsAtom),
+  };
 });
-
-export const updateCharacterIdAtom = atom(
-  null,
-  (get, set, characterId: string) => {
-    set(buildAtom, {
-      ...get(buildAtom),
-      characterId,
-    });
-  }
-);
-
-export const updateBuildNameAtom = atom(null, (get, set, buildName: string) => {
-  set(buildAtom, {
-    ...get(buildAtom),
-    buildName,
-    lastUpdate: new Date().toISOString().split("T")[0],
-  });
-});
-
-export const updateLastUpdatedPatchAtom = atom(
-  null,
-  (get, set, updatedPatch: string) => {
-    set(buildAtom, {
-      ...get(buildAtom),
-      updatedPatch,
-    });
-  }
-);
-
-export const updateMainStatsAtom = atom(
-  null,
-  (get, set, mainStats: ICharacterBuildInput["mainStats"]) => {
-    set(buildAtom, {
-      ...get(buildAtom),
-      mainStats,
-    });
-  }
-);
-
-export const updateSubStatsAtom = atom(
-  null,
-  (get, set, subStats: ICharacterBuildInput["subStats"]) => {
-    set(buildAtom, {
-      ...get(buildAtom),
-      subStats,
-    });
-  }
-);
-
-export const updateTalentPriorityAtom = atom(
-  null,
-  (get, set, talentPriority: ICharacterBuildInput["talentPriority"]) => {
-    set(buildAtom, {
-      ...get(buildAtom),
-      talentPriority,
-    });
-  }
-);
-
-export const updateNotesAtom = atom(null, (get, set, notes: string) => {
-  set(buildAtom, {
-    ...get(buildAtom),
-    notes,
-  });
-});
-
-export const updateWeaponsAtom = atom(
-  null,
-  (get, set, weapons: ICharacterBuildInput["weapons"]) => {
-    set(buildAtom, {
-      ...get(buildAtom),
-      weapons,
-    });
-  }
-);
-
-export const updateArtifactsAtom = atom(
-  null,
-  (get, set, artifacts: ICharacterBuildInput["artifacts"]) => {
-    set(buildAtom, {
-      ...get(buildAtom),
-      artifacts,
-    });
-  }
-);
-
-// Reset function
-export const resetBuildAtom = atom(null, (get, set) => {
-  set(buildAtom, {
-    ...emptyBuild,
-  });
-});
-
-// Full update function
-export const updateFullBuildAtom = atom(
-  null,
-  (get, set, newBuild: Partial<ICharacterBuildInput>) => {
-    set(buildAtom, {
-      ...get(buildAtom),
-      ...newBuild,
-    });
-  }
-);

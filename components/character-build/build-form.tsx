@@ -25,7 +25,6 @@ export function BuildForm({
 }: Readonly<BuildFormProps>) {
   const router = useRouter();
 
-  const buildData = useAtomValue(buildAtom);
   const buildWeapons = useAtomValue(weaponsAtom);
 
   return (

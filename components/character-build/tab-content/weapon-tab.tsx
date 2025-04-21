@@ -1,3 +1,8 @@
+import {
+  buildAtom,
+  characterWeaponTypeAtom,
+  weaponsAtom,
+} from "@/atoms/build-atom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -14,13 +19,16 @@ import { ICharacterBuildInput } from "@/types/build";
 import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { useAtom, useAtomValue } from "jotai";
 
 type Props = {
   buildWeapons: ICharacterBuildInput["weapons"];
 };
 
 export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
-  const { weapons, error, isLoading } = useWeaponData();
+  const characterWeaponType = useAtomValue(characterWeaponTypeAtom);
+  const { weapons, error, isLoading } = useWeaponData(characterWeaponType);
+  const [, updateWeapons] = useAtom(weaponsAtom);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -45,7 +53,7 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                     type="button"
                     variant="outline"
                     size="sm"
-                    onClick={() => removeWeapon(index)}
+                    // onClick={() => removeWeapon(index)}
                   >
                     <Minus className="h-4 w-4 mr-2" />
                     Remove
@@ -59,22 +67,11 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                   <Select
                     value={weapon.weaponId}
                     onValueChange={(value) => {
-                      const selectedWeapon = weapons.find(
-                        (w) => w.enkaId === value
+                      updateWeapons(
+                        buildWeapons.map((w, i) =>
+                          i === index ? { ...w, weaponId: value } : w
+                        )
                       );
-                      if (selectedWeapon) {
-                        handleWeaponChange(index, "weaponId", value);
-                        handleWeaponChange(
-                          index,
-                          "weaponName",
-                          selectedWeapon.name
-                        );
-                        handleWeaponChange(
-                          index,
-                          "weaponIcon",
-                          selectedWeapon.iconUrl ?? ""
-                        );
-                      }
                     }}
                     required={index === 0}
                   >
@@ -85,10 +82,13 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                       {weapons.map((w) => (
                         <SelectItem key={w.enkaId} value={w.enkaId}>
                           <div className="flex items-center gap-2">
+                            <Image
+                              src={w.icon}
+                              alt={w.name}
+                              width={20}
+                              height={20}
+                            />
                             {w.name}
-                            <span className="text-xs text-gray-500">
-                              {w.rarity} Stars
-                            </span>
                           </div>
                         </SelectItem>
                       ))}
@@ -99,14 +99,16 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                 <div className="space-y-2">
                   <Label htmlFor={`refinement-${index}`}>Refinement</Label>
                   <Select
-                    value={weapon.refinement?.toString() ?? ""}
-                    onValueChange={(value) =>
-                      handleWeaponChange(
-                        index,
-                        "refinement",
-                        Number.parseInt(value)
-                      )
-                    }
+                    value={weapon.weaponRefinement?.toString() ?? ""}
+                    onValueChange={(value) => {
+                      updateWeapons(
+                        buildWeapons.map((w, i) =>
+                          i === index
+                            ? { ...w, weaponRefinement: Number(value) }
+                            : w
+                        )
+                      );
+                    }}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select refinement" />

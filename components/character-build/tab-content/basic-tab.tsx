@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,16 +12,31 @@ import {
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useCharacterData } from "@/hooks/use-server-data";
-import { ICharacterBuildInput } from "@/types/build";
-import Image from "next/image";
+import { useAtom } from "jotai";
+import {
+  buildNameAtom,
+  characterIdAtom,
+  characterWeaponTypeAtom,
+  lastUpdatedPatchAtom,
+} from "@/atoms/build-atom";
+import { useEffect } from "react";
 
-type Props = {
-  // formData: ICharacterBuildInput;
-  // handleChange: (field: string, value: string) => void;
-};
-
-export default function BasicTab({}: Readonly<Props>) {
+export default function BasicTab() {
   const { characters, error, isLoading } = useCharacterData();
+
+  const [buildName, setBuildName] = useAtom(buildNameAtom);
+  const [characterId, setCharacterId] = useAtom(characterIdAtom);
+  const [lastUpdatedPatch, setLastUpdatedPatch] = useAtom(lastUpdatedPatchAtom);
+  const [, setCharacterWeaponType] = useAtom(characterWeaponTypeAtom);
+
+  useEffect(() => {
+    const weaponType = characters?.find(
+      (character) => character.uniqueId === characterId
+    )?.weaponType;
+    if (weaponType) {
+      setCharacterWeaponType(weaponType);
+    }
+  }, [characterId]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -40,6 +56,8 @@ export default function BasicTab({}: Readonly<Props>) {
               id="buildName"
               // value={formData.buildName}
               // onChange={(e) => handleChange("buildName", e.target.value)}
+              value={buildName}
+              onChange={(e) => setBuildName(e.target.value)}
               placeholder="eg: DPS Hu Tao"
               required
             />
@@ -48,8 +66,8 @@ export default function BasicTab({}: Readonly<Props>) {
           <div className="space-y-2">
             <Label htmlFor="character">Character</Label>
             <Select
-              // value={formData.characterId}
-              // onValueChange={(value) => handleChange("characterId", value)}
+              value={characterId}
+              onValueChange={(value) => setCharacterId(value)}
               required
             >
               <SelectTrigger>
@@ -85,8 +103,8 @@ export default function BasicTab({}: Readonly<Props>) {
             <Label htmlFor="updatedPatch">Updated Patch</Label>
             <Input
               id="updatedPatch"
-              // value={formData.updatedPatch}
-              // onChange={(e) => handleChange("updatedPatch", e.target.value)}
+              value={lastUpdatedPatch}
+              onChange={(e) => setLastUpdatedPatch(e.target.value)}
               placeholder="eg: 3.6"
               required
             />

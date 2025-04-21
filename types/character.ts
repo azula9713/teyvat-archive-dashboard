@@ -15,6 +15,7 @@ export interface IBaseCharacter {
   skillDepotId: string;
   element: EElement;
   isTraveler: boolean;
+  weaponType: string;
 }
 
 export interface ICharacter extends IBaseCharacter {

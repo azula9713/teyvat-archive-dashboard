@@ -1,8 +1,8 @@
 export interface IBaseWeapon {
   enkaId: string;
   name: string;
-  iconUrl: string;
+  icon: string;
   skillDepotId: string;
   type: string; // e.g., "Sword", "Bow", etc.
-  rarity: number; // e.g., 3, 4, 5 stars
+  stars: number; // e.g., 3, 4, 5 stars
 }

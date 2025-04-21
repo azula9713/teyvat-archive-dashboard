@@ -24,8 +24,12 @@ export const useCharacterData = () => {
   };
 };
 
-export const useWeaponData = () => {
-  const { data, error, isLoading } = useSWR("/weapons/all", fetchAllWeapons);
+export const useWeaponData = (charatcterWeaponType: string) => {
+  console.log("charatcterWeaponType", charatcterWeaponType);
+  const { data, error, isLoading } = useSWR(
+    `/weapons/all/${charatcterWeaponType}`,
+    () => fetchAllWeapons(charatcterWeaponType)
+  );
 
   const weapons: IBaseWeapon[] = data?.map((weapon: IBaseWeapon) => ({
     ...weapon,
