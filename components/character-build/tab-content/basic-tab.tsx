@@ -1,3 +1,5 @@
+import { useAtom } from "jotai";
+import { useEffect } from "react";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,14 +14,12 @@ import {
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useCharacterData } from "@/hooks/use-server-data";
-import { useAtom } from "jotai";
 import {
   buildNameAtom,
   characterIdAtom,
   characterWeaponTypeAtom,
   lastUpdatedPatchAtom,
 } from "@/atoms/build-atom";
-import { useEffect } from "react";
 
 export default function BasicTab() {
   const { characters, error, isLoading } = useCharacterData();
@@ -54,8 +54,6 @@ export default function BasicTab() {
             <Label htmlFor="buildName">Build Name</Label>
             <Input
               id="buildName"
-              // value={formData.buildName}
-              // onChange={(e) => handleChange("buildName", e.target.value)}
               value={buildName}
               onChange={(e) => setBuildName(e.target.value)}
               placeholder="eg: DPS Hu Tao"

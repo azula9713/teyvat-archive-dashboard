@@ -8,9 +8,7 @@ export interface ICharacterBuildInput {
     goblet: string[];
     circlet: string[];
   };
-  subStats: {
-    stats: string[];
-  };
+  subStats: string[];
   talentPriority: {
     normalAttack: number;
     elementalSkill: number;

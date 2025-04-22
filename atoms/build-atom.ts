@@ -12,9 +12,7 @@ const emptyBuild: ICharacterBuildInput = {
     goblet: [],
     circlet: [],
   },
-  subStats: {
-    stats: [],
-  },
+  subStats: [],
   talentPriority: {
     normalAttack: 1,
     elementalSkill: 1,

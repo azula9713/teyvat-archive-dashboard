@@ -1,3 +1,5 @@
+import { ChevronDown, ChevronUp, Plus, Trash } from "lucide-react";
+import { useAtom, useAtomValue } from "jotai";
 import { characterWeaponTypeAtom, weaponsAtom } from "@/atoms/build-atom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -12,10 +14,7 @@ import {
 import { TabsContent } from "@/components/ui/tabs";
 import { useWeaponData } from "@/hooks/use-server-data";
 import { ICharacterBuildInput } from "@/types/build";
-import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
-import React from "react";
-import { useAtom, useAtomValue } from "jotai";
 
 type Props = {
   buildWeapons: ICharacterBuildInput["weapons"];
@@ -25,6 +24,22 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
   const characterWeaponType = useAtomValue(characterWeaponTypeAtom);
   const { weapons, error, isLoading } = useWeaponData(characterWeaponType);
   const [, updateWeapons] = useAtom(weaponsAtom);
+
+  const updateWeaponOrder = (index: number, direction: "up" | "down") => {
+    const swapIndex = direction === "up" ? index - 1 : index + 1;
+
+    // Boundary check
+    if (swapIndex < 0 || swapIndex >= buildWeapons.length) return;
+
+    // Swap weapons
+    const newWeapons = [...buildWeapons];
+    [newWeapons[index], newWeapons[swapIndex]] = [
+      newWeapons[swapIndex],
+      newWeapons[index],
+    ];
+
+    updateWeapons(newWeapons);
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -45,17 +60,38 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-medium">Weapon {index + 1}</h3>
                 {buildWeapons.length > 1 && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                      updateWeapons(buildWeapons.filter((_, i) => i !== index));
-                    }}
-                  >
-                    <Minus className="h-4 w-4 mr-2" />
-                    Remove
-                  </Button>
+                  <div className="flex items-center space-x-0.5">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        updateWeapons(
+                          buildWeapons.filter((_, i) => i !== index)
+                        );
+                      }}
+                    >
+                      <Trash className="size-4" />
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={index === 0}
+                      onClick={() => updateWeaponOrder(index, "up")}
+                    >
+                      <ChevronUp className="size-4" />
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={index === buildWeapons.length - 1}
+                      onClick={() => updateWeaponOrder(index, "down")}
+                    >
+                      <ChevronDown className="size-4" />
+                    </Button>
+                  </div>
                 )}
               </div>
 
@@ -64,35 +100,34 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                   <Label htmlFor={`weapon-${index}`}>Weapon</Label>
                   <Select
                     value={weapon.weaponId}
-                    onValueChange={async (value) => {
+                    onValueChange={(value) => {
                       updateWeapons(
                         buildWeapons.map((w, i) =>
-                          i === index
-                            ? {
-                                ...w,
-                                weaponId: value,
-                                weaponRefinement: 1,
-                              }
-                            : w
+                          i === index ? { ...w, weaponId: value } : w
                         )
                       );
                     }}
-                    required={index === 0}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a weapon" />
+                      <SelectValue placeholder="Select weapon" />
                     </SelectTrigger>
                     <SelectContent>
-                      {weapons.map((w) => (
-                        <SelectItem key={w.enkaId} value={w.enkaId}>
+                      {weapons.map((weapon) => (
+                        <SelectItem
+                          key={weapon.enkaId}
+                          value={weapon.enkaId}
+                          disabled={buildWeapons.some(
+                            (w) => w.weaponId === weapon.enkaId
+                          )}
+                        >
                           <div className="flex items-center gap-2">
                             <Image
-                              src={w.icon}
-                              alt={w.name}
+                              src={weapon.icon}
+                              alt={weapon.name}
                               width={20}
                               height={20}
                             />
-                            {w.name}
+                            {weapon.name}
                           </div>
                         </SelectItem>
                       ))}
@@ -150,7 +185,7 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
             }
           >
             <Plus className="mr-2 h-4 w-4" />
-            Add Alternative Weapon
+            Add another weapon
           </Button>
         </div>
       </Card>

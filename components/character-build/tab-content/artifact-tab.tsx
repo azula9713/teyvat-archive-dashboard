@@ -85,7 +85,7 @@ export default function ArtifactTab({ buildArtifacts }: Readonly<Props>) {
                 (buildArtifacts[buildArtifacts.length - 1].artifactSets[0]
                   .piecesCount === 2 &&
                   buildArtifacts[buildArtifacts.length - 1].artifactSets[1]
-                    .setId === ""))
+                    ?.setId === ""))
             }
           >
             <Plus className="mr-2 h-4 w-4" />

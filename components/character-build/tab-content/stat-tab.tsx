@@ -3,18 +3,24 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { ICharacterBuildInput } from "@/types/build";
+import { useAtom } from "jotai";
+import { mainStatsAtom, subStatsAtom } from "@/atoms/build-atom";
 
-type Props = {
-  // formData: ICharacterBuildInput;
-  // handleMainStatChange: (field: string, value: string) => void;
-  // handleSubStatsChange: (value: string) => void;
-};
+export default function StatTab() {
+  const [mainStats, setMainStats] = useAtom(mainStatsAtom);
+  const [subStats, setSubStats] = useAtom(subStatsAtom);
 
-export default function StatTab({}: // formData,
-// handleMainStatChange,
-// handleSubStatsChange,
-Readonly<Props>) {
+  const handleMainStatChange = (field: string, value: string) => {
+    setMainStats({
+      ...mainStats,
+      [field]: value.split(",").map((stat) => stat.trim()),
+    });
+  };
+
+  const handleSubStatsChange = (value: string) => {
+    setSubStats(value.split(",").map((stat) => stat.trim()));
+  };
+
   return (
     <TabsContent value="stats" className="space-y-4 mt-6">
       <Card className="p-6">
@@ -23,8 +29,8 @@ Readonly<Props>) {
             <Label htmlFor="sands">Sands Main Stats</Label>
             <Input
               id="sands"
-              // value={formData.mainStats.sands.join(", ")}
-              // onChange={(e) => handleMainStatChange("sands", e.target.value)}
+              value={mainStats.sands}
+              onChange={(e) => handleMainStatChange("sands", e.target.value)}
               placeholder="eg: ATK%, ER%, HP%"
             />
             <p className="text-xs text-muted-foreground">
@@ -36,8 +42,8 @@ Readonly<Props>) {
             <Label htmlFor="goblet">Goblet Main Stats</Label>
             <Input
               id="goblet"
-              // value={formData.mainStats.goblet.join(", ")}
-              // onChange={(e) => handleMainStatChange("goblet", e.target.value)}
+              value={mainStats.goblet}
+              onChange={(e) => handleMainStatChange("goblet", e.target.value)}
               placeholder="eg: Pyro DMG%, ATK%"
             />
             <p className="text-xs text-muted-foreground">
@@ -49,8 +55,8 @@ Readonly<Props>) {
             <Label htmlFor="circlet">Circlet Main Stats</Label>
             <Input
               id="circlet"
-              // value={formData.mainStats.circlet.join(", ")}
-              // onChange={(e) => handleMainStatChange("circlet", e.target.value)}
+              value={mainStats.circlet}
+              onChange={(e) => handleMainStatChange("circlet", e.target.value)}
               placeholder="eg: CRIT Rate, CRIT DMG"
             />
             <p className="text-xs text-muted-foreground">
@@ -62,8 +68,8 @@ Readonly<Props>) {
             <Label htmlFor="subStats">Substats Priority</Label>
             <Input
               id="subStats"
-              // value={formData.subStats.stats.join(", ")}
-              // onChange={(e) => handleSubStatsChange(e.target.value)}
+              value={subStats.join(", ")}
+              onChange={(e) => handleSubStatsChange(e.target.value)}
               placeholder="eg: CRIT Rate, CRIT DMG, ATK%"
             />
             <p className="text-xs text-muted-foreground">
