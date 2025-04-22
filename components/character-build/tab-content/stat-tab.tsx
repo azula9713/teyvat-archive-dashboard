@@ -1,15 +1,15 @@
 import { useAtom } from "jotai";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import MultipleSelector, { Option } from "@/components/ui/multi-select";
-import { mainStatsAtom, subStatsAtom } from "@/atoms/build-atom";
+import { mainStatsAtom, statNotesAtom, subStatsAtom } from "@/atoms/build-atom";
 
 export default function StatTab() {
   const [mainStats, setMainStats] = useAtom(mainStatsAtom);
   const [subStats, setSubStats] = useAtom(subStatsAtom);
+  const [statNotes, setStatNotes] = useAtom(statNotesAtom);
 
   const sandsOptions: Option[] = [
     { label: "ATK%", value: "ATK%" },
@@ -152,8 +152,8 @@ export default function StatTab() {
             <Label htmlFor="statsNotes">Stats Notes</Label>
             <Textarea
               id="statsNotes"
-              // value={formData.mainStats.notes ?? ""}
-              // onChange={(e) => handleMainStatChange("notes", e.target.value)}
+              value={statNotes}
+              onChange={(e) => setStatNotes(e.target.value)}
               placeholder="Any notes about stat priorities..."
               rows={3}
             />

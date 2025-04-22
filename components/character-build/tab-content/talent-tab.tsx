@@ -10,10 +10,11 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useAtom } from "jotai";
-import { talentPriorityAtom } from "@/atoms/build-atom";
+import { talentNotesAtom, talentPriorityAtom } from "@/atoms/build-atom";
 
 export default function TalentTab() {
   const [talents, setTalents] = useAtom(talentPriorityAtom);
+  const [talentNotes, setTalentNotes] = useAtom(talentNotesAtom);
 
   const handleTalentChange = (field: string, value: number) => {
     setTalents((prev) => ({
@@ -87,18 +88,10 @@ export default function TalentTab() {
             <Label htmlFor="talentNotes">Talent Notes</Label>
             <Textarea
               id="talentNotes"
-              // value={formData.talentPriority.notes ?? ""}
-              // onChange={(e) => {
-              //   setFormData((prev: ICharacterBuildInput) => ({
-              //     ...prev,
-              //     talentPriority: {
-              //       ...prev.talentPriority,
-              //       notes: e.target.value,
-              //     },
-              //   }));
-              // }}
               placeholder="Any notes about talent priorities..."
               rows={3}
+              value={talentNotes}
+              onChange={(e) => setTalentNotes(e.target.value)}
             />
           </div>
         </div>

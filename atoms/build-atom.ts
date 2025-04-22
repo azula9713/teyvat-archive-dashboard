@@ -19,6 +19,10 @@ const emptyBuild: ICharacterBuildInput = {
     elementalBurst: 1,
   },
   notes: "",
+  statNotes: "",
+  talentNotes: "",
+  weaponNotes: "",
+  artifactNotes: "",
   weapons: [
     {
       weaponId: "",
@@ -61,6 +65,19 @@ export const talentPriorityAtom = atomWithStorage(
   emptyBuild.talentPriority
 );
 export const notesAtom = atomWithStorage("notes", emptyBuild.notes);
+export const statNotesAtom = atomWithStorage("statNotes", emptyBuild.statNotes);
+export const talentNotesAtom = atomWithStorage(
+  "talentNotes",
+  emptyBuild.talentNotes
+);
+export const weaponNotesAtom = atomWithStorage(
+  "weaponNotes",
+  emptyBuild.weaponNotes
+);
+export const artifactNotesAtom = atomWithStorage(
+  "artifactNotes",
+  emptyBuild.artifactNotes
+);
 export const weaponsAtom = atomWithStorage("weapons", emptyBuild.weapons);
 export const artifactsAtom = atomWithStorage("artifacts", emptyBuild.artifacts);
 

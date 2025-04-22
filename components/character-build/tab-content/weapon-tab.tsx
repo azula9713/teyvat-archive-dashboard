@@ -1,6 +1,10 @@
 import { ChevronDown, ChevronUp, Plus, Trash } from "lucide-react";
 import { useAtom, useAtomValue } from "jotai";
-import { characterWeaponTypeAtom, weaponsAtom } from "@/atoms/build-atom";
+import {
+  characterWeaponTypeAtom,
+  weaponNotesAtom,
+  weaponsAtom,
+} from "@/atoms/build-atom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -15,6 +19,7 @@ import { TabsContent } from "@/components/ui/tabs";
 import { useWeaponData } from "@/hooks/use-server-data";
 import { ICharacterBuildInput } from "@/types/build";
 import Image from "next/image";
+import { Textarea } from "@/components/ui/textarea";
 
 type Props = {
   buildWeapons: ICharacterBuildInput["weapons"];
@@ -24,6 +29,7 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
   const characterWeaponType = useAtomValue(characterWeaponTypeAtom);
   const { weapons, error, isLoading } = useWeaponData(characterWeaponType);
   const [, updateWeapons] = useAtom(weaponsAtom);
+  const [weaponNotes, setWeaponNotes] = useAtom(weaponNotesAtom);
 
   const updateWeaponOrder = (index: number, direction: "up" | "down") => {
     const swapIndex = direction === "up" ? index - 1 : index + 1;
@@ -187,6 +193,17 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
             <Plus className="mr-2 h-4 w-4" />
             Add another weapon
           </Button>
+        </div>
+
+        <div className="space-y-2 sm:col-span-2 mt-4">
+          <Label htmlFor="notes">Notes</Label>
+          <Textarea
+            id="notes"
+            placeholder="Any notes about the weapons..."
+            value={weaponNotes}
+            onChange={(e) => setWeaponNotes(e.target.value)}
+            rows={4}
+          />
         </div>
       </Card>
     </TabsContent>

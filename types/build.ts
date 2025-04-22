@@ -15,8 +15,10 @@ export interface ICharacterBuildInput {
     elementalBurst: number;
   };
   notes?: string;
+  artifactNotes?: string;
   statNotes?: string;
   talentNotes?: string;
+  weaponNotes?: string;
   weapons: {
     weaponId: string;
     weaponRank: number;

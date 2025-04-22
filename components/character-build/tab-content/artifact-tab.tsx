@@ -5,9 +5,11 @@ import { TabsContent } from "@/components/ui/tabs";
 import { ICharacterBuildInput } from "@/types/build";
 import { Minus, Plus } from "lucide-react";
 import { useAtom } from "jotai";
-import { artifactsAtom } from "@/atoms/build-atom";
+import { artifactNotesAtom, artifactsAtom } from "@/atoms/build-atom";
 import { useArtifactData } from "@/hooks/use-server-data";
 import ArtifactSection from "./artifact-section";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 type Props = {
   buildArtifacts: ICharacterBuildInput["artifacts"];
@@ -16,6 +18,7 @@ type Props = {
 export default function ArtifactTab({ buildArtifacts }: Readonly<Props>) {
   const { artifactSets, error, isLoading } = useArtifactData();
   const [, setArtifacts] = useAtom(artifactsAtom);
+  const [artifactNotes, setArtifactNotes] = useAtom(artifactNotesAtom);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -89,6 +92,17 @@ export default function ArtifactTab({ buildArtifacts }: Readonly<Props>) {
             <Plus className="mr-2 h-4 w-4" />
             Add another artifact set
           </Button>
+        </div>
+
+        <div className="space-y-2 sm:col-span-2 mt-4">
+          <Label htmlFor="notes">Notes</Label>
+          <Textarea
+            id="notes"
+            placeholder="Any notes about the artifacts..."
+            value={artifactNotes}
+            onChange={(e) => setArtifactNotes(e.target.value)}
+            rows={4}
+          />
         </div>
       </Card>
     </TabsContent>

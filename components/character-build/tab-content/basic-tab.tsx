@@ -19,6 +19,7 @@ import {
   characterIdAtom,
   characterWeaponTypeAtom,
   lastUpdatedPatchAtom,
+  notesAtom,
 } from "@/atoms/build-atom";
 
 export default function BasicTab() {
@@ -27,6 +28,7 @@ export default function BasicTab() {
   const [buildName, setBuildName] = useAtom(buildNameAtom);
   const [characterId, setCharacterId] = useAtom(characterIdAtom);
   const [lastUpdatedPatch, setLastUpdatedPatch] = useAtom(lastUpdatedPatchAtom);
+  const [notes, setNotes] = useAtom(notesAtom);
   const [, setCharacterWeaponType] = useAtom(characterWeaponTypeAtom);
 
   useEffect(() => {
@@ -112,9 +114,9 @@ export default function BasicTab() {
             <Label htmlFor="notes">Notes</Label>
             <Textarea
               id="notes"
-              // value={formData.notes ?? ""}
-              // onChange={(e) => handleChange("notes", e.target.value)}
               placeholder="Any general notes about this build..."
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
               rows={4}
             />
           </div>
