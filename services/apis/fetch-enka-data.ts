@@ -21,3 +21,13 @@ export const fetchAllWeapons = async (weaponType: string) => {
     throw error;
   }
 };
+
+export const fetchAllArtifactSets = async () => {
+  try {
+    const response = await httpClient.get("/artifacts/sets");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching artifact sets:", error);
+    throw error;
+  }
+};

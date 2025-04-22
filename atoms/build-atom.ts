@@ -36,6 +36,10 @@ const emptyBuild: ICharacterBuildInput = {
           setId: "",
           piecesCount: 0,
         },
+        {
+          setId: "",
+          piecesCount: 0,
+        },
       ],
     },
   ],

@@ -1,8 +1,4 @@
-import {
-  buildAtom,
-  characterWeaponTypeAtom,
-  weaponsAtom,
-} from "@/atoms/build-atom";
+import { characterWeaponTypeAtom, weaponsAtom } from "@/atoms/build-atom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -43,7 +39,7 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
         <div className="space-y-6">
           {buildWeapons.map((weapon, index) => (
             <div
-              key={weapon.weaponId}
+              key={`${weapon.weaponId ?? "empty"}-${weapon.weaponRank}`}
               className="space-y-4 pb-4 border-b last:border-0"
             >
               <div className="flex items-center justify-between">
@@ -53,7 +49,9 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                     type="button"
                     variant="outline"
                     size="sm"
-                    // onClick={() => removeWeapon(index)}
+                    onClick={() => {
+                      updateWeapons(buildWeapons.filter((_, i) => i !== index));
+                    }}
                   >
                     <Minus className="h-4 w-4 mr-2" />
                     Remove
@@ -66,10 +64,16 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                   <Label htmlFor={`weapon-${index}`}>Weapon</Label>
                   <Select
                     value={weapon.weaponId}
-                    onValueChange={(value) => {
+                    onValueChange={async (value) => {
                       updateWeapons(
                         buildWeapons.map((w, i) =>
-                          i === index ? { ...w, weaponId: value } : w
+                          i === index
+                            ? {
+                                ...w,
+                                weaponId: value,
+                                weaponRefinement: 1,
+                              }
+                            : w
                         )
                       );
                     }}
@@ -114,11 +118,11 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                       <SelectValue placeholder="Select refinement" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="1">R1</SelectItem>
-                      <SelectItem value="2">R2</SelectItem>
-                      <SelectItem value="3">R3</SelectItem>
-                      <SelectItem value="4">R4</SelectItem>
-                      <SelectItem value="5">R5</SelectItem>
+                      {Array.from({ length: 5 }, (_, i) => (
+                        <SelectItem key={i + 1} value={`${i + 1}`}>
+                          R{i + 1}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
@@ -126,7 +130,25 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
             </div>
           ))}
 
-          <Button type="button" variant="outline">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => {
+              updateWeapons([
+                ...buildWeapons,
+                {
+                  weaponId: "",
+                  weaponRefinement: 1,
+                  weaponRank: buildWeapons.length + 1,
+                },
+              ]);
+            }}
+            disabled={
+              //if the last weapon is empty, don't show the button
+              buildWeapons.length > 0 &&
+              buildWeapons[buildWeapons.length - 1].weaponId === ""
+            }
+          >
             <Plus className="mr-2 h-4 w-4" />
             Add Alternative Weapon
           </Button>

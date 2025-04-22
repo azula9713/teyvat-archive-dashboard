@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useAtomValue } from "jotai";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/ui/tabs";
 import type { ICharacterBuildInput } from "@/types/build";
@@ -11,8 +12,7 @@ import WeaponTab from "./tab-content/weapon-tab";
 import ArtifactTab from "./tab-content/artifact-tab";
 import StatTab from "./tab-content/stat-tab";
 import TalentTab from "./tab-content/talent-tab";
-import { useAtomValue } from "jotai";
-import { buildAtom, weaponsAtom } from "@/atoms/build-atom";
+import { artifactsAtom, buildAtom, weaponsAtom } from "@/atoms/build-atom";
 
 interface BuildFormProps {
   initialData?: ICharacterBuildInput;
@@ -25,13 +25,16 @@ export function BuildForm({
 }: Readonly<BuildFormProps>) {
   const router = useRouter();
 
+  const buildData = useAtomValue(buildAtom);
+
   const buildWeapons = useAtomValue(weaponsAtom);
+  const buildArtifacts = useAtomValue(artifactsAtom);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("Form submitted", e);
+        console.log("Form submitted", buildData);
         // handleSubmit(e);
         // router.push("/");
       }}
@@ -61,38 +64,10 @@ export function BuildForm({
         />
 
         <BasicTab />
-
-        <WeaponTab
-          buildWeapons={buildWeapons}
-          // formData={formData}
-          // handleWeaponChange={handleWeaponChange}
-          // removeWeapon={removeWeapon}
-          // addWeapon={addWeapon}
-        />
-
-        <ArtifactTab
-        // formData={formData}
-        // handleArtifactSetTypeChange={handleArtifactSetTypeChange}
-        // handleArtifactChange={handleArtifactChange}
-        // handleAlternativeSetTypeChange={handleAlternativeSetTypeChange}
-        // handleAlternativeArtifactChange={handleAlternativeArtifactChange}
-        // removeAlternativeArtifactSet={removeAlternativeArtifactSet}
-        // addAlternativeArtifactSet={addAlternativeArtifactSet}
-        // artifactSets={artifactSets}
-        // alternativeArtifacts={alternativeArtifacts}
-        />
-
-        <StatTab
-        // formData={formData}
-        // handleMainStatChange={handleMainStatChange}
-        // handleSubStatsChange={handleSubStatsChange}
-        />
-
-        <TalentTab
-        // formData={formData}
-        // handleTalentChange={handleTalentChange}
-        // setFormData={setFormData}
-        />
+        <WeaponTab buildWeapons={buildWeapons} />
+        <ArtifactTab buildArtifacts={buildArtifacts} />
+        <StatTab />
+        <TalentTab />
       </Tabs>
 
       <div className="flex justify-end gap-4">
