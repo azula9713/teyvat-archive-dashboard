@@ -27,7 +27,7 @@ const emptyBuild: ICharacterBuildInput = {
     {
       weaponId: "",
       weaponRank: 1,
-      weaponRefinement: 0,
+      weaponRefinement: 1,
     },
   ],
   artifacts: [
@@ -98,5 +98,9 @@ export const buildAtom = atom((get) => {
     notes: get(notesAtom),
     weapons: get(weaponsAtom),
     artifacts: get(artifactsAtom),
+    statNotes: get(statNotesAtom),
+    talentNotes: get(talentNotesAtom),
+    weaponNotes: get(weaponNotesAtom),
+    artifactNotes: get(artifactNotesAtom),
   };
 });
