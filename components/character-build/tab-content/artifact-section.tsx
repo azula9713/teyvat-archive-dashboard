@@ -31,35 +31,20 @@ export default function ArtifactSection({
     setIndex: number,
     value: string
   ) => {
-    if (piecesCount === 4) {
-      console.log("here at 4");
-      setBuildArtifacts(
-        buildArtifacts?.map((a, i) =>
-          i === index
-            ? { ...a, artifactSets: [{ setId: String(value), piecesCount: 4 }] }
-            : a
-        )
-      );
-    }
+    const updatedSet = buildArtifacts.map((a, i) => {
+      if (i !== index) return a;
 
-    if (piecesCount === 2) {
-      console.log("here at 2");
+      const updatedSets =
+        piecesCount === 4
+          ? [{ setId: String(value), piecesCount: 4 }]
+          : buildArtifacts[index].artifactSets.map((set, idx) =>
+              idx === setIndex ? { setId: String(value), piecesCount: 2 } : set
+            );
 
-      const currentSet = buildArtifacts[index].artifactSets;
+      return { ...a, artifactSets: updatedSets };
+    });
 
-      let updatedSet: ICharacterBuildInput["artifacts"][number]["artifactSets"] =
-        [];
-
-      updatedSet = currentSet?.map((set, i) =>
-        i === setIndex ? { ...set, setId: String(value), piecesCount: 2 } : set
-      );
-
-      setBuildArtifacts(
-        buildArtifacts.map((a, i) =>
-          i === index ? { ...a, artifactSets: updatedSet } : a
-        ) as unknown as ICharacterBuildInput["artifacts"]
-      );
-    }
+    setBuildArtifacts(updatedSet);
   };
 
   useEffect(() => {
@@ -69,6 +54,14 @@ export default function ArtifactSection({
       buildArtifacts[index].artifactSets[0].setId
     );
   }, [isFullSet]);
+
+  useEffect(() => {
+    if (buildArtifacts[index].artifactSets[0].piecesCount === 4) {
+      setIsFullSet(true);
+    } else {
+      setIsFullSet(false);
+    }
+  }, [buildArtifacts]);
 
   return (
     <>

@@ -39,7 +39,7 @@ const isStageEnabled = (stage: string, build: ICharacterBuildInput) => {
         build.mainStats.sands.length > 0 &&
         build.mainStats.goblet.length > 0 &&
         build.mainStats.circlet.length > 0 &&
-        build.subStats.stats.length > 0
+        build.subStats.length > 0
       );
 
     default:
