@@ -20,7 +20,7 @@ export interface ICharacterBuildInput {
   talentNotes?: string;
   weaponNotes?: string;
   weapons: {
-    weaponId: string;
+    weaponId: number;
     weaponRank: number;
     weaponRefinement: number | null;
   }[];

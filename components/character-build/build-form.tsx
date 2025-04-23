@@ -13,6 +13,7 @@ import ArtifactTab from "./tab-content/artifact-tab";
 import StatTab from "./tab-content/stat-tab";
 import TalentTab from "./tab-content/talent-tab";
 import { artifactsAtom, buildAtom, weaponsAtom } from "@/atoms/build-atom";
+import { createCharacterBuild } from "@/services/apis/character-build";
 
 interface BuildFormProps {
   initialData?: ICharacterBuildInput;
@@ -30,13 +31,17 @@ export function BuildForm({
   const buildWeapons = useAtomValue(weaponsAtom);
   const buildArtifacts = useAtomValue(artifactsAtom);
 
+  const saveBuild = async () => {
+    console.log("saveBuild", buildData);
+    const response = await createCharacterBuild(buildData);
+    console.log(response);
+  };
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("Form submitted", buildData);
-        // handleSubmit(e);
-        // router.push("/");
+        saveBuild();
       }}
       className="space-y-8 pb-10"
     >

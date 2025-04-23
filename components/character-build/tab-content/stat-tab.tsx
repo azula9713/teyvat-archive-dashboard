@@ -16,6 +16,7 @@ export default function StatTab() {
     { label: "ER%", value: "ER%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" },
   ];
 
   const gobletOptions: Option[] = [
@@ -29,6 +30,7 @@ export default function StatTab() {
     { label: "ATK%", value: "ATK%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" },
   ];
 
   const circletOptions: Option[] = [
@@ -38,6 +40,17 @@ export default function StatTab() {
     { label: "ATK%", value: "ATK%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" },
+  ];
+
+  const subStatOptions: Option[] = [
+    { label: "CRIT Rate", value: "CRIT Rate" },
+    { label: "CRIT DMG", value: "CRIT DMG" },
+    { label: "ATK%", value: "ATK%" },
+    { label: "HP%", value: "HP%" },
+    { label: "DEF%", value: "DEF%" },
+    { label: "ER%", value: "ER%" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" },
   ];
 
   const handleMainStatChange = (field: string, value: string) => {
@@ -128,7 +141,7 @@ export default function StatTab() {
           <div className="space-y-2">
             <Label htmlFor="subStats">Substats Priority</Label>
             <MultipleSelector
-              defaultOptions={sandsOptions}
+              defaultOptions={subStatOptions}
               placeholder="eg: CRIT Rate, CRIT DMG"
               value={
                 subStats.map((stat) => ({

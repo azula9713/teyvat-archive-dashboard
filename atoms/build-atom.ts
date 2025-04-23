@@ -25,7 +25,7 @@ const emptyBuild: ICharacterBuildInput = {
   artifactNotes: "",
   weapons: [
     {
-      weaponId: "",
+      weaponId: 0,
       weaponRank: 1,
       weaponRefinement: 1,
     },
