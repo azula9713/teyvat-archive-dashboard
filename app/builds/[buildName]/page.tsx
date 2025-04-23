@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { BuildForm } from "@/components/character-build/build-form";
-import { isAuthenticated } from "@/lib/auth";
 import type { ICharacterBuildInput } from "@/types/build";
 import { sampleBuilds } from "@/data/sample-builds";
 
@@ -21,11 +20,6 @@ export default function EditBuildPage({
   const decodedBuildName = decodeURIComponent(params.buildName);
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/auth/login");
-      return;
-    }
-
     // In a real app, this would fetch from an API
     const foundBuild = sampleBuilds.find(
       (b) => b.buildName === decodedBuildName

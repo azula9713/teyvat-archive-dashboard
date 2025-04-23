@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +18,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2 } from "lucide-react";
+import { loginEmailPassword } from "@/services/apis/auth-api";
+import { IUser } from "@/types/user";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -30,9 +32,10 @@ const formSchema = z.object({
 
 export function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [error, setError] = useState<string | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,30 +46,28 @@ export function LoginForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
+    setError(null);
 
     try {
-      // In a real app, this would call an authentication API
-      console.log("Login attempt:", values);
+      const response: IUser = await loginEmailPassword(
+        values.email,
+        values.password
+      );
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // For demo purposes, we'll just simulate a successful login
-      localStorage.setItem("isAuthenticated", "true");
+      // Store the token in cookies
+      document.cookie = `auth_token=${response.session.accessToken}; path=/; max-age=86400`; // 24 hours
 
       toast({
         title: "Login successful",
         description: "Welcome back to Teyvat Archive Admin!",
       });
 
-      router.push("/");
-    } catch (error) {
-      console.error("Login error:", error);
-      toast({
-        title: "Login failed",
-        description: "Please check your credentials and try again.",
-        variant: "destructive",
-      });
+      // Redirect to the original requested page or dashboard
+      const from = searchParams.get("from") ?? "/";
+      router.push(from);
+    } catch (error: any) {
+      console.log("Login error:", error);
+      setError(error.response.data.message);
     } finally {
       setIsLoading(false);
     }
@@ -111,6 +112,9 @@ export function LoginForm() {
             "Login"
           )}
         </Button>
+        <p className="text-sm text-muted-foreground">
+          {error && <span className="text-red-500">{error}</span>}
+        </p>
       </form>
     </Form>
   );
