@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import { sampleBuilds } from "@/data/sample-builds";
-import type { ICharacterBuildInput } from "@/types/build";
+import type { ICharacterBuild } from "@/types/build";
 
 export function RecentBuilds() {
-  const [builds, setBuilds] = useState<ICharacterBuildInput[]>([]);
+  const [builds, setBuilds] = useState<ICharacterBuild[]>([]);
 
   useEffect(() => {
     // In a real app, this would fetch from an API

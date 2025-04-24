@@ -25,10 +25,10 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { sampleBuilds } from "@/data/sample-builds";
-import type { ICharacterBuildInput } from "@/types/build";
+import type { ICharacterBuild } from "@/types/build";
 
 export function BuildList() {
-  const [builds, setBuilds] = useState<ICharacterBuildInput[]>([]);
+  const [builds, setBuilds] = useState<ICharacterBuild[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export function BuildList() {
   };
 
   // Helper function to display artifact set info
-  const getArtifactSetDisplay = (build: ICharacterBuildInput) => {
+  const getArtifactSetDisplay = (build: ICharacterBuild) => {
     const mainArtifact = build.artifacts[0];
 
     if (mainArtifact.isFullSet) {

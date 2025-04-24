@@ -5,11 +5,11 @@
 // 4. stats
 // 5. talents
 
-import { ICharacterBuildInput } from "@/types/build";
+import { ICharacterBuild } from "@/types/build";
 
 const basicFields = ["buildName", "characterId", "lastUpdatedPatch"] as const;
 
-const isStageEnabled = (stage: string, build: ICharacterBuildInput) => {
+const isStageEnabled = (stage: string, build: ICharacterBuild) => {
   switch (stage) {
     case "basic":
       return true;

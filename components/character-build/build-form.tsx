@@ -8,7 +8,7 @@ import { artifactsAtom, buildAtom, weaponsAtom } from "@/atoms/build-atom";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/ui/tabs";
 import { createCharacterBuild } from "@/services/apis/character-build";
-import type { ICharacterBuildInput } from "@/types/build";
+import type { ICharacterBuild } from "@/types/build";
 
 import BuildTabList from "./build-tab-list";
 import ArtifactTab from "./tab-content/artifact-tab";
@@ -18,7 +18,7 @@ import TalentTab from "./tab-content/talent-tab";
 import WeaponTab from "./tab-content/weapon-tab";
 
 interface BuildFormProps {
-  initialData?: ICharacterBuildInput;
+  initialData?: ICharacterBuild;
   isEditing?: boolean;
 }
 

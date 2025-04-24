@@ -1,9 +1,9 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
-import { ICharacterBuildInput } from "@/types/build";
+import { ICharacterBuild } from "@/types/build";
 
-const emptyBuild: ICharacterBuildInput = {
+const emptyBuild: ICharacterBuild = {
   authorId: "",
   characterId: "",
   buildName: "",

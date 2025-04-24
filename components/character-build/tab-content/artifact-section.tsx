@@ -13,7 +13,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { IBaseArtifactSet } from "@/types/artifacts";
-import { ICharacterBuildInput } from "@/types/build";
+import { ICharacterBuild } from "@/types/build";
 type Props = {
   index: number;
   artifactSets: IBaseArtifactSet[];

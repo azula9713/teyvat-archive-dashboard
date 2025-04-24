@@ -13,13 +13,20 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { sampleBuilds } from "@/data/sample-builds";
+import useDashboardData from "@/hooks/use-dashboard-data";
 
 export function DashboardContent() {
-  const totalBuilds = sampleBuilds.length;
-  const charactersUsed = new Set(sampleBuilds.map((build) => build.characterId))
-    .size;
+  const { totalBuilds, builds, buildsLoading, buildsError } =
+    useDashboardData();
 
+  if (buildsLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (buildsError) {
+    return <div>Error: {buildsError.message}</div>;
+  }
+  console.log(builds);
   return (
     <div className="space-y-6">
       <div className="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
@@ -65,7 +72,7 @@ export function DashboardContent() {
                 <Users className="text-muted-foreground h-4 w-4" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{charactersUsed}</div>
+                <div className="text-2xl font-bold">characters ised</div>
                 <p className="text-muted-foreground text-xs">
                   +1 from last month
                 </p>
@@ -97,7 +104,7 @@ export function DashboardContent() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  {sampleBuilds.slice(0, 5).map((build) => (
+                  {builds.slice(0, 5).map((build) => (
                     <div
                       key={build.buildName}
                       className="flex items-center justify-between border-b pb-2"
@@ -109,7 +116,7 @@ export function DashboardContent() {
                         </p>
                       </div>
                       <div className="text-muted-foreground text-sm">
-                        {build.lastUpdate}
+                        {build.lastUpdatedPatch}
                       </div>
                     </div>
                   ))}
@@ -131,7 +138,7 @@ export function DashboardContent() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   {Array.from(
                     sampleBuilds.reduce((acc, build) => {
                       acc.set(
@@ -154,7 +161,7 @@ export function DashboardContent() {
                         </p>
                       </div>
                     ))}
-                </div>
+                </div> */}
               </CardContent>
             </Card>
           </div>

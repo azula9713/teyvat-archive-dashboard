@@ -1,6 +1,6 @@
-import type { ICharacterBuildInput } from "@/types/build";
+import type { ICharacterBuild } from "@/types/build";
 
-export const sampleBuilds: ICharacterBuildInput[] = [
+export const sampleBuilds: ICharacterBuild[] = [
   {
     buildName: "Melt Ganyu",
     characterId: "ganyu",

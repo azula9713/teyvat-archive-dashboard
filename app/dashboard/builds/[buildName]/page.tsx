@@ -8,14 +8,14 @@ import { useEffect, useState } from "react";
 import { BuildForm } from "@/components/character-build/build-form";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { sampleBuilds } from "@/data/sample-builds";
-import type { ICharacterBuildInput } from "@/types/build";
+import type { ICharacterBuild } from "@/types/build";
 
 export default function EditBuildPage({
   params
 }: {
   params: { buildName: string };
 }) {
-  const [build, setBuild] = useState<ICharacterBuildInput | null>(null);
+  const [build, setBuild] = useState<ICharacterBuild | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const decodedBuildName = decodeURIComponent(params.buildName);

@@ -1,4 +1,4 @@
-export interface ICharacterBuildInput {
+export interface ICharacterBuild {
   authorId: string;
   characterId: string;
   buildName: string;

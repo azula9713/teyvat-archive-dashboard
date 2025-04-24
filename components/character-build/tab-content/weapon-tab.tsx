@@ -20,10 +20,10 @@ import {
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useWeaponData } from "@/hooks/use-server-data";
-import { ICharacterBuildInput } from "@/types/build";
+import { ICharacterBuild } from "@/types/build";
 
 type Props = {
-  buildWeapons: ICharacterBuildInput["weapons"];
+  buildWeapons: ICharacterBuild["weapons"];
 };
 
 export default function WeaponTab({ buildWeapons }: Readonly<Props>) {

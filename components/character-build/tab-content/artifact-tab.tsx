@@ -8,12 +8,12 @@ import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useArtifactData } from "@/hooks/use-server-data";
-import { ICharacterBuildInput } from "@/types/build";
+import { ICharacterBuild } from "@/types/build";
 
 import ArtifactSection from "./artifact-section";
 
 type Props = {
-  buildArtifacts: ICharacterBuildInput["artifacts"];
+  buildArtifacts: ICharacterBuild["artifacts"];
 };
 
 export default function ArtifactTab({ buildArtifacts }: Readonly<Props>) {
