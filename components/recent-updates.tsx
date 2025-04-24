@@ -12,7 +12,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import {
   Dialog,
@@ -21,7 +21,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -29,7 +29,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -42,7 +42,7 @@ const initialUpdates = [
     title: "Added new character builds for 5.4",
     description: "Added builds for Clorinde and Sigewinne",
     author: "Admin",
-    date: "2023-12-15T10:30:00Z",
+    date: "2023-12-15T10:30:00Z"
   },
   {
     id: "2",
@@ -50,24 +50,24 @@ const initialUpdates = [
     description:
       "Updated artifact recommendations for all Hydro characters based on the new set",
     author: "Admin",
-    date: "2023-12-10T14:45:00Z",
+    date: "2023-12-10T14:45:00Z"
   },
   {
     id: "3",
     title: "Fixed weapon rankings",
     description: "Corrected the weapon rankings for Raiden Shogun and Hu Tao",
     author: "Admin",
-    date: "2023-12-05T09:15:00Z",
-  },
+    date: "2023-12-05T09:15:00Z"
+  }
 ];
 
 const formSchema = z.object({
   title: z.string().min(5, {
-    message: "Title must be at least 5 characters.",
+    message: "Title must be at least 5 characters."
   }),
   description: z.string().min(10, {
-    message: "Description must be at least 10 characters.",
-  }),
+    message: "Description must be at least 10 characters."
+  })
 });
 
 export function RecentUpdates() {
@@ -79,8 +79,8 @@ export function RecentUpdates() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
-      description: "",
-    },
+      description: ""
+    }
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -89,7 +89,7 @@ export function RecentUpdates() {
       title: values.title,
       description: values.description,
       author: "Admin", // In a real app, this would be the current user
-      date: new Date().toISOString(),
+      date: new Date().toISOString()
     };
 
     setUpdates([newUpdate, ...updates]);
@@ -98,7 +98,7 @@ export function RecentUpdates() {
 
     toast({
       title: "Update added",
-      description: "Your update has been added to the changelog.",
+      description: "Your update has been added to the changelog."
     });
   }
 
@@ -109,13 +109,13 @@ export function RecentUpdates() {
       month: "short",
       day: "numeric",
       hour: "2-digit",
-      minute: "2-digit",
+      minute: "2-digit"
     }).format(date);
   }
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <h3 className="text-lg font-medium">Changelog</h3>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>

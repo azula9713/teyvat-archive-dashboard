@@ -5,7 +5,7 @@ import { ForgotPasswordForm } from "@/components/auth/forgot-password-form";
 
 export const metadata: Metadata = {
   title: "Forgot Password | Teyvat Archive Admin",
-  description: "Reset your password for the Teyvat Archive Admin",
+  description: "Reset your password for the Teyvat Archive Admin"
 };
 
 export default function ForgotPasswordPage() {
@@ -16,13 +16,13 @@ export default function ForgotPasswordPage() {
           <h1 className="text-2xl font-semibold tracking-tight">
             Forgot password
           </h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Enter your email address and we'll send you a link to reset your
             password
           </p>
         </div>
         <ForgotPasswordForm />
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <p className="text-muted-foreground px-8 text-center text-sm">
           <Link
             href="/auth/login"
             className="hover:text-brand underline underline-offset-4"

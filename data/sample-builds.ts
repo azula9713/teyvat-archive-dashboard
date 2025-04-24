@@ -1,4 +1,4 @@
-import type { ICharacterBuildInput } from "@/types/build"
+import type { ICharacterBuildInput } from "@/types/build";
 
 export const sampleBuilds: ICharacterBuildInput[] = [
   {
@@ -11,15 +11,15 @@ export const sampleBuilds: ICharacterBuildInput[] = [
         weaponName: "Amos' Bow",
         weaponIcon: "/weapons/amos-bow.png",
         refinement: 1,
-        rank: 1,
+        rank: 1
       },
       {
         weaponId: "prototype-crescent",
         weaponName: "Prototype Crescent",
         weaponIcon: "/weapons/prototype-crescent.png",
         refinement: 5,
-        rank: 2,
-      },
+        rank: 2
+      }
     ],
     artifacts: [
       {
@@ -29,29 +29,30 @@ export const sampleBuilds: ICharacterBuildInput[] = [
           {
             mainArtifactSetId: "shimenawas-reminiscence",
             isFullSet: true,
-            rank: 2,
-          },
+            rank: 2
+          }
         ],
-        rank: 1,
-      },
+        rank: 1
+      }
     ],
     mainStats: {
       sands: ["ATK%"],
       goblet: ["Cryo DMG%"],
       circlet: ["CRIT DMG", "CRIT Rate"],
-      notes: "Prioritize CRIT DMG if using Blizzard Strayer",
+      notes: "Prioritize CRIT DMG if using Blizzard Strayer"
     },
     subStats: {
       stats: ["CRIT DMG", "CRIT Rate", "ATK%", "Elemental Mastery"],
-      notes: "Balance CRIT Rate and CRIT DMG for optimal damage",
+      notes: "Balance CRIT Rate and CRIT DMG for optimal damage"
     },
     talentPriority: {
       normalAttack: 1,
       elementalSkill: 3,
       elementalBurst: 2,
-      notes: "Normal Attack is the highest priority for Charged Shot playstyle",
+      notes: "Normal Attack is the highest priority for Charged Shot playstyle"
     },
-    notes: "This build focuses on maximizing Charged Shot damage for Melt reactions.",
+    notes:
+      "This build focuses on maximizing Charged Shot damage for Melt reactions."
   },
   {
     buildName: "Hyperbloom Nahida",
@@ -63,30 +64,30 @@ export const sampleBuilds: ICharacterBuildInput[] = [
         weaponName: "A Thousand Floating Dreams",
         weaponIcon: "/weapons/a-thousand-floating-dreams.png",
         refinement: 1,
-        rank: 1,
-      },
+        rank: 1
+      }
     ],
     artifacts: [
       {
         mainArtifactSetId: "deepwood-memories",
         isFullSet: true,
-        rank: 1,
-      },
+        rank: 1
+      }
     ],
     mainStats: {
       sands: ["Elemental Mastery"],
       goblet: ["Elemental Mastery"],
-      circlet: ["Elemental Mastery", "CRIT Rate"],
+      circlet: ["Elemental Mastery", "CRIT Rate"]
     },
     subStats: {
-      stats: ["Elemental Mastery", "CRIT Rate", "CRIT DMG", "Energy Recharge"],
+      stats: ["Elemental Mastery", "CRIT Rate", "CRIT DMG", "Energy Recharge"]
     },
     talentPriority: {
       normalAttack: 3,
       elementalSkill: 1,
-      elementalBurst: 2,
+      elementalBurst: 2
     },
-    notes: "Focus on Elemental Mastery for Hyperbloom reactions.",
+    notes: "Focus on Elemental Mastery for Hyperbloom reactions."
   },
   {
     buildName: "Main DPS Raiden",
@@ -98,15 +99,15 @@ export const sampleBuilds: ICharacterBuildInput[] = [
         weaponName: "Engulfing Lightning",
         weaponIcon: "/weapons/engulfing-lightning.png",
         refinement: 1,
-        rank: 1,
+        rank: 1
       },
       {
         weaponId: "the-catch",
         weaponName: "The Catch",
         weaponIcon: "/weapons/the-catch.png",
         refinement: 5,
-        rank: 2,
-      },
+        rank: 2
+      }
     ],
     artifacts: [
       {
@@ -117,25 +118,25 @@ export const sampleBuilds: ICharacterBuildInput[] = [
             mainArtifactSetId: "noblesse-oblige",
             isFullSet: false,
             secondaryArtifactSetId: "shimenawas-reminiscence",
-            rank: 2,
-          },
+            rank: 2
+          }
         ],
-        rank: 1,
-      },
+        rank: 1
+      }
     ],
     mainStats: {
       sands: ["Energy Recharge", "ATK%"],
       goblet: ["Electro DMG%"],
-      circlet: ["CRIT Rate", "CRIT DMG"],
+      circlet: ["CRIT Rate", "CRIT DMG"]
     },
     subStats: {
-      stats: ["CRIT Rate", "CRIT DMG", "Energy Recharge", "ATK%"],
+      stats: ["CRIT Rate", "CRIT DMG", "Energy Recharge", "ATK%"]
     },
     talentPriority: {
       normalAttack: 3,
       elementalSkill: 2,
-      elementalBurst: 1,
+      elementalBurst: 1
     },
-    notes: "Aim for around 250-270% Energy Recharge for optimal damage.",
-  },
-]
+    notes: "Aim for around 250-270% Energy Recharge for optimal damage."
+  }
+];

@@ -2,7 +2,7 @@
 
 import { useHydrateAtoms } from "jotai/utils";
 
-import {  userAtom } from "@/atoms/user-atom";
+import { userAtom } from "@/atoms/user-atom";
 import { IUser } from "@/types/user";
 
 interface UserProfileProviderProps {
@@ -12,7 +12,7 @@ interface UserProfileProviderProps {
 
 export function UserProfileProvider({
   userProfile,
-  children,
+  children
 }: Readonly<UserProfileProviderProps>) {
   useHydrateAtoms([[userAtom, userProfile]]);
   return <>{children}</>;

@@ -24,8 +24,8 @@ export const signUpAction = async (formData: FormData) => {
     email,
     password,
     options: {
-      emailRedirectTo: `${origin}/auth/callback`,
-    },
+      emailRedirectTo: `${origin}/auth/callback`
+    }
   });
 
   if (error) {
@@ -45,7 +45,7 @@ export const signInAction = async (email: string, password: string) => {
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
-    password,
+    password
   });
 
   if (error) {
@@ -66,7 +66,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/auth/callback?redirect_to=/dashboard/reset-password`,
+    redirectTo: `${origin}/auth/callback?redirect_to=/dashboard/reset-password`
   });
 
   if (error) {
@@ -112,7 +112,7 @@ export const resetPasswordAction = async (formData: FormData) => {
   }
 
   const { error } = await supabase.auth.updateUser({
-    password: password,
+    password: password
   });
 
   if (error) {

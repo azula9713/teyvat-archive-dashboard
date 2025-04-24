@@ -14,7 +14,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -23,9 +23,9 @@ import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   description: z.string().min(5, {
-    message: "Description must be at least 5 characters.",
+    message: "Description must be at least 5 characters."
   }),
-  version: z.string().optional(),
+  version: z.string().optional()
 });
 
 export function UpdateForm() {
@@ -36,8 +36,8 @@ export function UpdateForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       description: "",
-      version: "",
-    },
+      version: ""
+    }
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -56,14 +56,14 @@ export function UpdateForm() {
         description: values.description,
         author: "Admin", // In a real app, this would be the current user
         createdAt: new Date().toISOString(),
-        version: values.version || undefined,
+        version: values.version || undefined
       };
 
       sampleUpdates.unshift(newUpdate);
 
       toast({
         title: "Update created",
-        description: "Your update has been added to the changelog.",
+        description: "Your update has been added to the changelog."
       });
 
       form.reset();
@@ -72,7 +72,7 @@ export function UpdateForm() {
       toast({
         title: "Something went wrong",
         description: "Failed to create update. Please try again.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsLoading(false);

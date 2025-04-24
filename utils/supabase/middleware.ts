@@ -8,8 +8,8 @@ export const updateSession = async (request: NextRequest) => {
     // Create an unmodified response
     let response = NextResponse.next({
       request: {
-        headers: request.headers,
-      },
+        headers: request.headers
+      }
     });
 
     const supabase = createServerClient(
@@ -25,13 +25,13 @@ export const updateSession = async (request: NextRequest) => {
               request.cookies.set(name, value)
             );
             response = NextResponse.next({
-              request,
+              request
             });
             cookiesToSet.forEach(({ name, value, options }) =>
               response.cookies.set(name, value, options)
             );
-          },
-        },
+          }
+        }
       }
     );
 
@@ -55,8 +55,8 @@ export const updateSession = async (request: NextRequest) => {
     // Check out http://localhost:3000 for Next Steps.
     return NextResponse.next({
       request: {
-        headers: request.headers,
-      },
+        headers: request.headers
+      }
     });
   }
 };

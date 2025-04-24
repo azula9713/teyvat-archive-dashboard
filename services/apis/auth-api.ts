@@ -4,7 +4,7 @@ export const loginEmailPassword = async (email: string, password: string) => {
   try {
     const response = await httpClient.post("/auth/login", {
       email,
-      password,
+      password
     });
     return response.data;
   } catch (error) {

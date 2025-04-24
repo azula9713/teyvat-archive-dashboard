@@ -5,7 +5,7 @@ export enum EElement {
   Electro = "Electro",
   Dendro = "Dendro",
   Cryo = "Cryo",
-  Geo = "Geo",
+  Geo = "Geo"
 }
 
 export interface IBaseCharacter {

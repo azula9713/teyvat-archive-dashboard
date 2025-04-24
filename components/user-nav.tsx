@@ -14,9 +14,8 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-
 
 export function UserNav() {
   const [user] = useAtom(userAtom);
@@ -43,10 +42,10 @@ export function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">
+            <p className="text-sm leading-none font-medium">
               {user.displayName}
             </p>
-            <p className="text-xs text-muted-foreground">{user.email}</p>
+            <p className="text-muted-foreground text-xs">{user.email}</p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

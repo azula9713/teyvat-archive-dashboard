@@ -17,7 +17,7 @@ export default function StatTab() {
     { label: "ER%", value: "ER%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
-    { label: "Elemental Mastery", value: "Elemental Mastery" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" }
   ];
 
   const gobletOptions: Option[] = [
@@ -31,7 +31,7 @@ export default function StatTab() {
     { label: "ATK%", value: "ATK%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
-    { label: "Elemental Mastery", value: "Elemental Mastery" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" }
   ];
 
   const circletOptions: Option[] = [
@@ -41,7 +41,7 @@ export default function StatTab() {
     { label: "ATK%", value: "ATK%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
-    { label: "Elemental Mastery", value: "Elemental Mastery" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" }
   ];
 
   const subStatOptions: Option[] = [
@@ -51,13 +51,13 @@ export default function StatTab() {
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
     { label: "ER%", value: "ER%" },
-    { label: "Elemental Mastery", value: "Elemental Mastery" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" }
   ];
 
   const handleMainStatChange = (field: string, value: string) => {
     setMainStats({
       ...mainStats,
-      [field]: value.split(",").map((stat) => stat.trim()),
+      [field]: value.split(",").map((stat) => stat.trim())
     });
   };
 
@@ -66,7 +66,7 @@ export default function StatTab() {
   };
 
   return (
-    <TabsContent value="stats" className="space-y-4 mt-6">
+    <TabsContent value="stats" className="mt-6 space-y-4">
       <Card className="p-6">
         <div className="space-y-6">
           <div className="space-y-2">
@@ -78,7 +78,7 @@ export default function StatTab() {
               value={
                 mainStats.sands.map((stat) => ({
                   label: stat,
-                  value: stat,
+                  value: stat
                 })) ?? []
               }
               onChange={(selectedOptions) => {
@@ -88,7 +88,7 @@ export default function StatTab() {
                 handleMainStatChange("sands", selectedValues.join(", "));
               }}
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               Separate multiple options with commas
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function StatTab() {
               value={
                 mainStats.goblet.map((stat) => ({
                   label: stat,
-                  value: stat,
+                  value: stat
                 })) ?? []
               }
               onChange={(selectedOptions) => {
@@ -111,7 +111,7 @@ export default function StatTab() {
                 handleMainStatChange("goblet", selectedValues.join(", "));
               }}
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               Separate multiple options with commas
             </p>
           </div>
@@ -124,7 +124,7 @@ export default function StatTab() {
               value={
                 mainStats.circlet.map((stat) => ({
                   label: stat,
-                  value: stat,
+                  value: stat
                 })) ?? []
               }
               onChange={(selectedOptions) => {
@@ -134,7 +134,7 @@ export default function StatTab() {
                 handleMainStatChange("circlet", selectedValues.join(", "));
               }}
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               Separate multiple options with commas
             </p>
           </div>
@@ -147,7 +147,7 @@ export default function StatTab() {
               value={
                 subStats.map((stat) => ({
                   label: stat,
-                  value: stat,
+                  value: stat
                 })) ?? []
               }
               onChange={(selectedOptions) => {
@@ -157,7 +157,7 @@ export default function StatTab() {
                 handleSubStatsChange(selectedValues.join(", "));
               }}
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               List in order of priority, separated by commas
             </p>
           </div>

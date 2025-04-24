@@ -24,8 +24,8 @@ export const createClient = async () => {
             // This can be ignored if you have middleware refreshing
             // user sessions.
           }
-        },
-      },
+        }
+      }
     }
   );
 };

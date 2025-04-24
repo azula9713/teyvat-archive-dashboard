@@ -17,7 +17,6 @@ import StatTab from "./tab-content/stat-tab";
 import TalentTab from "./tab-content/talent-tab";
 import WeaponTab from "./tab-content/weapon-tab";
 
-
 interface BuildFormProps {
   initialData?: ICharacterBuildInput;
   isEditing?: boolean;
@@ -25,7 +24,7 @@ interface BuildFormProps {
 
 export function BuildForm({
   initialData,
-  isEditing = false,
+  isEditing = false
 }: Readonly<BuildFormProps>) {
   const router = useRouter();
 
@@ -48,7 +47,7 @@ export function BuildForm({
       }}
       className="space-y-8 pb-10"
     >
-      <div className="flex items-center gap-2 mb-6">
+      <div className="mb-6 flex items-center gap-2">
         <Button
           type="button"
           variant="outline"
@@ -67,7 +66,7 @@ export function BuildForm({
             { label: "Weapons", value: "weapons" },
             { label: "Artifacts", value: "artifacts" },
             { label: "Stats", value: "stats" },
-            { label: "Talents", value: "talents" },
+            { label: "Talents", value: "talents" }
           ]}
         />
 

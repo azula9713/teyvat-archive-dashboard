@@ -6,28 +6,25 @@ import { UserProfileProvider } from "@/components/user-profile-provider";
 import httpClient from "@/services/http-client";
 import { createClient } from "@/utils/supabase/server";
 
-
-
 export default async function DashboardHome() {
   const supabase = await createClient();
 
   const {
-    data: { session },
+    data: { session }
   } = await supabase.auth.getSession();
 
   if (!session) {
     return redirect("/login");
   }
-  
+
   const getUserProfile = async () => {
     const response = await httpClient.get("/auth/profile", {
       headers: {
-        Authorization: `Bearer ${session.access_token}`,
-      },
+        Authorization: `Bearer ${session.access_token}`
+      }
     });
     return response.data;
   };
-
 
   const userProfile = await getUserProfile();
 

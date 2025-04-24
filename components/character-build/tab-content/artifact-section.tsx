@@ -10,7 +10,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { IBaseArtifactSet } from "@/types/artifacts";
 import { ICharacterBuildInput } from "@/types/build";
@@ -20,7 +20,7 @@ type Props = {
 };
 export default function ArtifactSection({
   index,
-  artifactSets,
+  artifactSets
 }: Readonly<Props>) {
   const [buildArtifacts, setBuildArtifacts] = useAtom(artifactsAtom);
   const [isFullSet, setIsFullSet] = useState(

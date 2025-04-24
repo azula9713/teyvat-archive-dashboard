@@ -5,7 +5,7 @@ import Image from "next/image";
 import {
   characterWeaponTypeAtom,
   weaponNotesAtom,
-  weaponsAtom,
+  weaponsAtom
 } from "@/atoms/build-atom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -15,7 +15,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
@@ -42,7 +42,7 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
     const newWeapons = [...buildWeapons];
     [newWeapons[index], newWeapons[swapIndex]] = [
       newWeapons[swapIndex],
-      newWeapons[index],
+      newWeapons[index]
     ];
 
     updateWeapons(newWeapons);
@@ -56,13 +56,13 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
   }
 
   return (
-    <TabsContent value="weapons" className="space-y-4 mt-6">
+    <TabsContent value="weapons" className="mt-6 space-y-4">
       <Card className="p-6">
         <div className="space-y-6">
           {buildWeapons.map((weapon, index) => (
             <div
               key={`${weapon.weaponId ?? "empty"}-${weapon.weaponRank}`}
-              className="space-y-4 pb-4 border-b last:border-0"
+              className="space-y-4 border-b pb-4 last:border-0"
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-medium">Weapon {index + 1}</h3>
@@ -181,8 +181,8 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
                 {
                   weaponId: "",
                   weaponRefinement: 1,
-                  weaponRank: buildWeapons.length + 1,
-                },
+                  weaponRank: buildWeapons.length + 1
+                }
               ]);
             }}
             disabled={
@@ -196,7 +196,7 @@ export default function WeaponTab({ buildWeapons }: Readonly<Props>) {
           </Button>
         </div>
 
-        <div className="space-y-2 sm:col-span-2 mt-4">
+        <div className="mt-4 space-y-2 sm:col-span-2">
           <Label htmlFor="notes">Notes</Label>
           <Textarea
             id="notes"

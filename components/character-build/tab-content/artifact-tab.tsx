@@ -10,9 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useArtifactData } from "@/hooks/use-server-data";
 import { ICharacterBuildInput } from "@/types/build";
 
-
 import ArtifactSection from "./artifact-section";
-
 
 type Props = {
   buildArtifacts: ICharacterBuildInput["artifacts"];
@@ -33,13 +31,13 @@ export default function ArtifactTab({ buildArtifacts }: Readonly<Props>) {
   console.log("buildArtifacts", buildArtifacts);
 
   return (
-    <TabsContent value="artifacts" className="space-y-4 mt-6">
+    <TabsContent value="artifacts" className="mt-6 space-y-4">
       <Card className="p-6">
         <div className="space-y-6">
           {buildArtifacts.map((artifact, index) => (
             <div
               key={`${artifact.artifactSets[0].setId}-${artifact.rank}`}
-              className="space-y-4 pb-4 border-b last:border-0"
+              className="space-y-4 border-b pb-4 last:border-0"
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-medium">
@@ -56,7 +54,7 @@ export default function ArtifactTab({ buildArtifacts }: Readonly<Props>) {
                       );
                     }}
                   >
-                    <Minus className="h-4 w-4 mr-2" />
+                    <Minus className="mr-2 h-4 w-4" />
                     Remove
                   </Button>
                 )}
@@ -75,9 +73,9 @@ export default function ArtifactTab({ buildArtifacts }: Readonly<Props>) {
                   rank: buildArtifacts.length + 1,
                   artifactSets: [
                     { setId: "", piecesCount: 2 },
-                    { setId: "", piecesCount: 2 },
-                  ],
-                },
+                    { setId: "", piecesCount: 2 }
+                  ]
+                }
               ]);
             }}
             disabled={
@@ -97,7 +95,7 @@ export default function ArtifactTab({ buildArtifacts }: Readonly<Props>) {
           </Button>
         </div>
 
-        <div className="space-y-2 sm:col-span-2 mt-4">
+        <div className="mt-4 space-y-2 sm:col-span-2">
           <Label htmlFor="notes">Notes</Label>
           <Textarea
             id="notes"

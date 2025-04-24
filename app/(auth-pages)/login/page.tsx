@@ -5,7 +5,7 @@ import { LoginForm } from "@/components/auth/login-form";
 
 export const metadata: Metadata = {
   title: "Login | Teyvat Archive Admin",
-  description: "Login to access the Teyvat Archive Admin",
+  description: "Login to access the Teyvat Archive Admin"
 };
 
 export default function LoginPage() {
@@ -16,12 +16,12 @@ export default function LoginPage() {
           <h1 className="text-2xl font-semibold tracking-tight">
             Welcome back
           </h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Enter your credentials to access your account
           </p>
         </div>
         <LoginForm />
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <p className="text-muted-foreground px-8 text-center text-sm">
           <Link
             href="/auth/forgot-password"
             className="hover:text-brand underline underline-offset-4"

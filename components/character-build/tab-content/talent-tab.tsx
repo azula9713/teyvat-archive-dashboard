@@ -8,7 +8,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
@@ -20,12 +20,12 @@ export default function TalentTab() {
   const handleTalentChange = (field: string, value: number) => {
     setTalents((prev) => ({
       ...prev,
-      [field]: value,
+      [field]: value
     }));
   };
 
   return (
-    <TabsContent value="talents" className="space-y-4 mt-6">
+    <TabsContent value="talents" className="mt-6 space-y-4">
       <Card className="p-6">
         <div className="space-y-6">
           <div className="space-y-2">

@@ -10,11 +10,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Teyvat Archive Admin",
   description: "Manage your Genshin Impact character builds",
-  generator: "v0.dev",
+  generator: "v0.dev"
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {

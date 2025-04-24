@@ -1,60 +1,66 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Loader2 } from "lucide-react"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { useToast } from "@/hooks/use-toast"
-
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-})
+    message: "Please enter a valid email address."
+  })
+});
 
 export function ForgotPasswordForm() {
-  const { toast } = useToast()
-  const [isLoading, setIsLoading] = useState(false)
-  const [emailSent, setEmailSent] = useState(false)
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-    },
-  })
+      email: ""
+    }
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true)
+    setIsLoading(true);
 
     try {
       // In a real app, this would call an API to send a password reset email
-      console.log("Password reset requested for:", values.email)
+      console.log("Password reset requested for:", values.email);
 
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      setEmailSent(true)
+      setEmailSent(true);
 
       toast({
         title: "Reset link sent",
-        description: "Check your email for a link to reset your password.",
-      })
+        description: "Check your email for a link to reset your password."
+      });
     } catch (error) {
-      console.error("Password reset error:", error)
+      console.error("Password reset error:", error);
       toast({
         title: "Something went wrong",
         description: "Failed to send reset link. Please try again.",
-        variant: "destructive",
-      })
+        variant: "destructive"
+      });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
@@ -63,13 +69,19 @@ export function ForgotPasswordForm() {
       <div className="space-y-4">
         <div className="rounded-lg border p-6 shadow-2xs">
           <h3 className="text-lg font-medium">Check your email</h3>
-          <p className="mt-2 text-sm text-muted-foreground">We've sent a password reset link to your email address.</p>
+          <p className="text-muted-foreground mt-2 text-sm">
+            We've sent a password reset link to your email address.
+          </p>
         </div>
-        <Button variant="outline" className="w-full" onClick={() => setEmailSent(false)}>
+        <Button
+          variant="outline"
+          className="w-full"
+          onClick={() => setEmailSent(false)}
+        >
           Back to reset form
         </Button>
       </div>
-    )
+    );
   }
 
   return (
@@ -100,5 +112,5 @@ export function ForgotPasswordForm() {
         </Button>
       </form>
     </Form>
-  )
+  );
 }

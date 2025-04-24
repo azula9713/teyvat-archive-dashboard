@@ -3,7 +3,7 @@ import useSWR from "swr";
 import {
   fetchAllCharacters,
   fetchAllWeapons,
-  fetchAllArtifactSets,
+  fetchAllArtifactSets
 } from "@/services/apis/fetch-enka-data";
 import { IBaseArtifactSet } from "@/types/artifacts";
 import { IBaseCharacter, ICharacter } from "@/types/character";
@@ -17,13 +17,13 @@ export const useCharacterData = () => {
 
   const characters: ICharacter[] = data?.map((character: IBaseCharacter) => ({
     ...character,
-    uniqueId: `${character.enkaId}-${character.skillDepotId}`,
+    uniqueId: `${character.enkaId}-${character.skillDepotId}`
   }));
 
   return {
     characters,
     error,
-    isLoading,
+    isLoading
   };
 };
 
@@ -34,13 +34,13 @@ export const useWeaponData = (charatcterWeaponType: string) => {
   );
 
   const weapons: IBaseWeapon[] = data?.map((weapon: IBaseWeapon) => ({
-    ...weapon,
+    ...weapon
   }));
 
   return {
     weapons,
     error,
-    isLoading,
+    isLoading
   };
 };
 
@@ -54,12 +54,12 @@ export const useArtifactData = () => {
     ?.filter((set: IBaseArtifactSet) => set.highestRarity > 3)
     .map((artifactSet: IBaseArtifactSet) => ({
       ...artifactSet,
-      id: String(artifactSet.id),
+      id: String(artifactSet.id)
     }));
 
   return {
     artifactSets,
     error,
-    isLoading,
+    isLoading
   };
 };

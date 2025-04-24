@@ -14,16 +14,16 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 const formSchema = z.object({
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "Please enter a valid email address."
   }),
   password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
+    message: "Password must be at least 8 characters."
+  })
 });
 
 export function LoginForm() {
@@ -33,8 +33,8 @@ export function LoginForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: "",
-    },
+      password: ""
+    }
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -90,7 +90,7 @@ export function LoginForm() {
             "Login"
           )}
         </Button>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           {error && <span className="text-red-500">{error}</span>}
         </p>
       </form>
