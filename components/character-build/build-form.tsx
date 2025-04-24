@@ -1,19 +1,22 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useAtomValue } from "jotai";
+import { Save, ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+import { artifactsAtom, buildAtom, weaponsAtom } from "@/atoms/build-atom";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/ui/tabs";
+import { createCharacterBuild } from "@/services/apis/character-build";
 import type { ICharacterBuildInput } from "@/types/build";
-import { Save, ArrowLeft } from "lucide-react";
+
 import BuildTabList from "./build-tab-list";
-import BasicTab from "./tab-content/basic-tab";
-import WeaponTab from "./tab-content/weapon-tab";
 import ArtifactTab from "./tab-content/artifact-tab";
+import BasicTab from "./tab-content/basic-tab";
 import StatTab from "./tab-content/stat-tab";
 import TalentTab from "./tab-content/talent-tab";
-import { artifactsAtom, buildAtom, weaponsAtom } from "@/atoms/build-atom";
-import { createCharacterBuild } from "@/services/apis/character-build";
+import WeaponTab from "./tab-content/weapon-tab";
+
 
 interface BuildFormProps {
   initialData?: ICharacterBuildInput;

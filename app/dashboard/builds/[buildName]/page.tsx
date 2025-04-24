@@ -2,12 +2,13 @@
 
 export const runtime = "edge";
 
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { DashboardLayout } from "@/components/dashboard-layout";
+import { useEffect, useState } from "react";
+
 import { BuildForm } from "@/components/character-build/build-form";
-import type { ICharacterBuildInput } from "@/types/build";
+import { DashboardLayout } from "@/components/dashboard-layout";
 import { sampleBuilds } from "@/data/sample-builds";
+import type { ICharacterBuildInput } from "@/types/build";
 
 export default function EditBuildPage({
   params,

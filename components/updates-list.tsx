@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { formatDistanceToNow } from "date-fns"
+import { useState, useEffect } from "react"
+
 import { Badge } from "@/components/ui/badge"
 import { sampleUpdates } from "@/data/sample-updates"
 import type { Update } from "@/types/update"

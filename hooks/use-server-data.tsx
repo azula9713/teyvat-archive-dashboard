@@ -1,3 +1,5 @@
+import useSWR from "swr";
+
 import {
   fetchAllCharacters,
   fetchAllWeapons,
@@ -6,7 +8,6 @@ import {
 import { IBaseArtifactSet } from "@/types/artifacts";
 import { IBaseCharacter, ICharacter } from "@/types/character";
 import { IBaseWeapon } from "@/types/weapon";
-import useSWR from "swr";
 
 export const useCharacterData = () => {
   const { data, error, isLoading } = useSWR(

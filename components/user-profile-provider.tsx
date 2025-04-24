@@ -1,6 +1,8 @@
 "use client";
 
-import { setUserAtom } from "@/atoms/user-atom";
+import { useHydrateAtoms } from "jotai/utils";
+
+import {  userAtom } from "@/atoms/user-atom";
 import { IUser } from "@/types/user";
 
 interface UserProfileProviderProps {
@@ -12,6 +14,6 @@ export function UserProfileProvider({
   userProfile,
   children,
 }: Readonly<UserProfileProviderProps>) {
-  setUserAtom({ userFromServer: userProfile });
+  useHydrateAtoms([[userAtom, userProfile]]);
   return <>{children}</>;
 }

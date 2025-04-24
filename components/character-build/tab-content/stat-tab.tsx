@@ -1,10 +1,11 @@
 import { useAtom } from "jotai";
+
+import { mainStatsAtom, statNotesAtom, subStatsAtom } from "@/atoms/build-atom";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import MultipleSelector, { Option } from "@/components/ui/multi-select";
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import MultipleSelector, { Option } from "@/components/ui/multi-select";
-import { mainStatsAtom, statNotesAtom, subStatsAtom } from "@/atoms/build-atom";
 
 export default function StatTab() {
   const [mainStats, setMainStats] = useAtom(mainStatsAtom);

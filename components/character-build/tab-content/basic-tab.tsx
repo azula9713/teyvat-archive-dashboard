@@ -1,6 +1,14 @@
 import { useAtom } from "jotai";
-import { useEffect } from "react";
 import Image from "next/image";
+import { useEffect } from "react";
+
+import {
+  buildNameAtom,
+  characterIdAtom,
+  characterWeaponTypeAtom,
+  lastUpdatedPatchAtom,
+  notesAtom,
+} from "@/atoms/build-atom";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,13 +22,6 @@ import {
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useCharacterData } from "@/hooks/use-server-data";
-import {
-  buildNameAtom,
-  characterIdAtom,
-  characterWeaponTypeAtom,
-  lastUpdatedPatchAtom,
-  notesAtom,
-} from "@/atoms/build-atom";
 
 export default function BasicTab() {
   const { characters, error, isLoading } = useCharacterData();

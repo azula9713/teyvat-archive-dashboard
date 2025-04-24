@@ -1,7 +1,7 @@
 "use client";
 
-import { DashboardLayout } from "@/components/dashboard-layout";
 import { BuildForm } from "@/components/character-build/build-form";
+import { DashboardLayout } from "@/components/dashboard-layout";
 
 export default function NewBuildPage() {
   return (

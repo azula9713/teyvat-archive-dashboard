@@ -1,9 +1,12 @@
-import { DashboardLayout } from "@/components/dashboard-layout";
-import { DashboardContent } from "@/components/dashboard-content";
-import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import useUser from "@/hooks/use-user";
+
+import { DashboardContent } from "@/components/dashboard-content";
+import { DashboardLayout } from "@/components/dashboard-layout";
 import { UserProfileProvider } from "@/components/user-profile-provider";
+import httpClient from "@/services/http-client";
+import { createClient } from "@/utils/supabase/server";
+
+
 
 export default async function DashboardHome() {
   const supabase = await createClient();
@@ -15,8 +18,16 @@ export default async function DashboardHome() {
   if (!session) {
     return redirect("/login");
   }
+  
+  const getUserProfile = async () => {
+    const response = await httpClient.get("/auth/profile", {
+      headers: {
+        Authorization: `Bearer ${session.access_token}`,
+      },
+    });
+    return response.data;
+  };
 
-  const { getUserProfile } = useUser({ userToken: session.access_token });
 
   const userProfile = await getUserProfile();
 

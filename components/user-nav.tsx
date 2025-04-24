@@ -1,5 +1,10 @@
 "use client";
 
+import { useAtom } from "jotai";
+import { LogOut, User } from "lucide-react";
+
+import { signOutAction } from "@/app/actions";
+import { userAtom } from "@/atoms/user-atom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,10 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, User } from "lucide-react";
-import { useAtom } from "jotai";
-import { userAtom } from "@/atoms/user-atom";
-import { signOutAction } from "@/app/actions";
+
 
 export function UserNav() {
   const [user] = useAtom(userAtom);

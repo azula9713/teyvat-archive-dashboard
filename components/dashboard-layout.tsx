@@ -1,14 +1,15 @@
 "use client";
 
 import type { ReactNode } from "react";
+
 import { Header } from "@/components/header";
+import { Navigation } from "@/components/navigation";
 import {
   SidebarProvider,
   Sidebar,
   SidebarInset,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { Navigation } from "@/components/navigation";
 
 interface DashboardLayoutProps {
   children: ReactNode;

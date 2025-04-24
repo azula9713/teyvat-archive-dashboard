@@ -1,11 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Search, Plus, Edit, Trash2 } from "lucide-react"
+import Link from "next/link"
+import { useState, useEffect } from "react"
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,8 +15,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import type { ICharacterBuildInput } from "@/types/build"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 import { sampleBuilds } from "@/data/sample-builds"
+import type { ICharacterBuildInput } from "@/types/build"
 
 export function BuildList() {
   const [builds, setBuilds] = useState<ICharacterBuildInput[]>([])

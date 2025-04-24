@@ -1,7 +1,7 @@
 "use client";
 
-import { DashboardLayout } from "@/components/dashboard-layout";
 import { BuildList } from "@/components/build-list";
+import { DashboardLayout } from "@/components/dashboard-layout";
 
 export default function BuildsPage() {
   return (

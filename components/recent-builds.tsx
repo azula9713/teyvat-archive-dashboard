@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
 import { formatDistanceToNow } from "date-fns"
+import Link from "next/link"
+import { useState, useEffect } from "react"
+
 import { sampleBuilds } from "@/data/sample-builds"
 import type { ICharacterBuildInput } from "@/types/build"
 

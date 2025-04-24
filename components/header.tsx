@@ -1,8 +1,8 @@
 "use client";
 
 import { ModeToggle } from "@/components/mode-toggle";
-import { UserNav } from "@/components/user-nav";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { UserNav } from "@/components/user-nav";
 
 export function Header() {
   return (

@@ -1,5 +1,7 @@
-import { ChevronDown, ChevronUp, Plus, Trash } from "lucide-react";
 import { useAtom, useAtomValue } from "jotai";
+import { ChevronDown, ChevronUp, Plus, Trash } from "lucide-react";
+import Image from "next/image";
+
 import {
   characterWeaponTypeAtom,
   weaponNotesAtom,
@@ -16,10 +18,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TabsContent } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import { useWeaponData } from "@/hooks/use-server-data";
 import { ICharacterBuildInput } from "@/types/build";
-import Image from "next/image";
-import { Textarea } from "@/components/ui/textarea";
 
 type Props = {
   buildWeapons: ICharacterBuildInput["weapons"];

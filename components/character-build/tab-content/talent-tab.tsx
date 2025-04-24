@@ -1,5 +1,7 @@
+import { useAtom } from "jotai";
+
+import { talentNotesAtom, talentPriorityAtom } from "@/atoms/build-atom";
 import { Card } from "@/components/ui/card";
-import { TabsContent } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -8,9 +10,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { useAtom } from "jotai";
-import { talentNotesAtom, talentPriorityAtom } from "@/atoms/build-atom";
 
 export default function TalentTab() {
   const [talents, setTalents] = useAtom(talentPriorityAtom);
