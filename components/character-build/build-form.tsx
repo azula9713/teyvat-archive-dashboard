@@ -1,18 +1,21 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useAtomValue } from "jotai";
+import { Save, ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+import { artifactsAtom, buildAtom, weaponsAtom } from "@/atoms/build-atom";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/ui/tabs";
+import { createCharacterBuild } from "@/services/apis/character-build";
 import type { ICharacterBuildInput } from "@/types/build";
-import { Save, ArrowLeft } from "lucide-react";
+
 import BuildTabList from "./build-tab-list";
-import BasicTab from "./tab-content/basic-tab";
-import WeaponTab from "./tab-content/weapon-tab";
 import ArtifactTab from "./tab-content/artifact-tab";
+import BasicTab from "./tab-content/basic-tab";
 import StatTab from "./tab-content/stat-tab";
 import TalentTab from "./tab-content/talent-tab";
-import { artifactsAtom, buildAtom, weaponsAtom } from "@/atoms/build-atom";
+import WeaponTab from "./tab-content/weapon-tab";
 
 interface BuildFormProps {
   initialData?: ICharacterBuildInput;
@@ -21,7 +24,7 @@ interface BuildFormProps {
 
 export function BuildForm({
   initialData,
-  isEditing = false,
+  isEditing = false
 }: Readonly<BuildFormProps>) {
   const router = useRouter();
 
@@ -30,17 +33,21 @@ export function BuildForm({
   const buildWeapons = useAtomValue(weaponsAtom);
   const buildArtifacts = useAtomValue(artifactsAtom);
 
+  const saveBuild = async () => {
+    console.log("saveBuild", buildData);
+    const response = await createCharacterBuild(buildData);
+    console.log(response);
+  };
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("Form submitted", buildData);
-        // handleSubmit(e);
-        // router.push("/");
+        saveBuild();
       }}
       className="space-y-8 pb-10"
     >
-      <div className="flex items-center gap-2 mb-6">
+      <div className="mb-6 flex items-center gap-2">
         <Button
           type="button"
           variant="outline"
@@ -59,7 +66,7 @@ export function BuildForm({
             { label: "Weapons", value: "weapons" },
             { label: "Artifacts", value: "artifacts" },
             { label: "Stats", value: "stats" },
-            { label: "Talents", value: "talents" },
+            { label: "Talents", value: "talents" }
           ]}
         />
 

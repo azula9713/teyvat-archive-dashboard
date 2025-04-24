@@ -1,3 +1,7 @@
+import { useAtom } from "jotai";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
 import { artifactsAtom } from "@/atoms/build-atom";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -6,20 +10,17 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { IBaseArtifactSet } from "@/types/artifacts";
 import { ICharacterBuildInput } from "@/types/build";
-import { useAtom } from "jotai";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 type Props = {
   index: number;
   artifactSets: IBaseArtifactSet[];
 };
 export default function ArtifactSection({
   index,
-  artifactSets,
+  artifactSets
 }: Readonly<Props>) {
   const [buildArtifacts, setBuildArtifacts] = useAtom(artifactsAtom);
   const [isFullSet, setIsFullSet] = useState(

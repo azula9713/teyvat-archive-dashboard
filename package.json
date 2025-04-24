@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "pages:build": "bunx @cloudflare/next-on-pages",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "lint:fix": "eslint --fix .",
     "preview": "bun run pages:build && wrangler pages dev",
     "deploy": "bun run pages:build && wrangler pages deploy"
   },
@@ -40,6 +42,8 @@
     "@radix-ui/react-toggle": "^1.1.6",
     "@radix-ui/react-toggle-group": "^1.1.7",
     "@radix-ui/react-tooltip": "^1.2.3",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -65,6 +69,7 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@cloudflare/next-on-pages": "^1.13.12",
     "@tailwindcss/postcss": "^4.1.4",
     "@types/node": "^22.14.1",
@@ -72,6 +77,12 @@
     "@types/react-dom": "^19.1.2",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "eslint": "^9.24.0",
+    "eslint-config-next": "15.3.0",
+    "eslint-plugin-import": "^2.31.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11"
   }
 }

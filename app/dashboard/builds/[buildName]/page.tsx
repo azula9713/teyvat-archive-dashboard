@@ -2,16 +2,16 @@
 
 export const runtime = "edge";
 
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { DashboardLayout } from "@/components/dashboard-layout";
+import { useEffect, useState } from "react";
+
 import { BuildForm } from "@/components/character-build/build-form";
-import { isAuthenticated } from "@/lib/auth";
-import type { ICharacterBuildInput } from "@/types/build";
+import { DashboardLayout } from "@/components/dashboard-layout";
 import { sampleBuilds } from "@/data/sample-builds";
+import type { ICharacterBuildInput } from "@/types/build";
 
 export default function EditBuildPage({
-  params,
+  params
 }: {
   params: { buildName: string };
 }) {
@@ -21,11 +21,6 @@ export default function EditBuildPage({
   const decodedBuildName = decodeURIComponent(params.buildName);
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/auth/login");
-      return;
-    }
-
     // In a real app, this would fetch from an API
     const foundBuild = sampleBuilds.find(
       (b) => b.buildName === decodedBuildName
@@ -37,7 +32,7 @@ export default function EditBuildPage({
   if (loading) {
     return (
       <DashboardLayout>
-        <div className="flex items-center justify-center h-[60vh]">
+        <div className="flex h-[60vh] items-center justify-center">
           <p className="text-lg">Loading build...</p>
         </div>
       </DashboardLayout>
@@ -47,8 +42,8 @@ export default function EditBuildPage({
   if (!build) {
     return (
       <DashboardLayout>
-        <div className="flex flex-col items-center justify-center h-[60vh]">
-          <h1 className="text-2xl font-bold mb-2">Build Not Found</h1>
+        <div className="flex h-[60vh] flex-col items-center justify-center">
+          <h1 className="mb-2 text-2xl font-bold">Build Not Found</h1>
           <p className="text-muted-foreground mb-4">
             The build you're looking for doesn't exist.
           </p>
@@ -65,7 +60,7 @@ export default function EditBuildPage({
 
   return (
     <DashboardLayout>
-      <h1 className="text-3xl font-bold mb-6">Edit Build: {build.buildName}</h1>
+      <h1 className="mb-6 text-3xl font-bold">Edit Build: {build.buildName}</h1>
       <BuildForm initialData={build} isEditing />
     </DashboardLayout>
   );

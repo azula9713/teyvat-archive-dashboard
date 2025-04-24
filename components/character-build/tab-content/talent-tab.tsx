@@ -1,16 +1,17 @@
+import { useAtom } from "jotai";
+
+import { talentNotesAtom, talentPriorityAtom } from "@/atoms/build-atom";
 import { Card } from "@/components/ui/card";
-import { TabsContent } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
+import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { useAtom } from "jotai";
-import { talentNotesAtom, talentPriorityAtom } from "@/atoms/build-atom";
 
 export default function TalentTab() {
   const [talents, setTalents] = useAtom(talentPriorityAtom);
@@ -19,12 +20,12 @@ export default function TalentTab() {
   const handleTalentChange = (field: string, value: number) => {
     setTalents((prev) => ({
       ...prev,
-      [field]: value,
+      [field]: value
     }));
   };
 
   return (
-    <TabsContent value="talents" className="space-y-4 mt-6">
+    <TabsContent value="talents" className="mt-6 space-y-4">
       <Card className="p-6">
         <div className="space-y-6">
           <div className="space-y-2">

@@ -1,6 +1,7 @@
-import { ICharacterBuildInput } from "@/types/build";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
+
+import { ICharacterBuildInput } from "@/types/build";
 
 const emptyBuild: ICharacterBuildInput = {
   authorId: "",
@@ -10,13 +11,13 @@ const emptyBuild: ICharacterBuildInput = {
   mainStats: {
     sands: [],
     goblet: [],
-    circlet: [],
+    circlet: []
   },
   subStats: [],
   talentPriority: {
     normalAttack: 1,
     elementalSkill: 1,
-    elementalBurst: 1,
+    elementalBurst: 1
   },
   notes: "",
   statNotes: "",
@@ -25,10 +26,10 @@ const emptyBuild: ICharacterBuildInput = {
   artifactNotes: "",
   weapons: [
     {
-      weaponId: "",
+      weaponId: 0,
       weaponRank: 1,
-      weaponRefinement: 1,
-    },
+      weaponRefinement: 1
+    }
   ],
   artifacts: [
     {
@@ -36,15 +37,15 @@ const emptyBuild: ICharacterBuildInput = {
       artifactSets: [
         {
           setId: "",
-          piecesCount: 0,
+          piecesCount: 0
         },
         {
           setId: "",
-          piecesCount: 0,
-        },
-      ],
-    },
-  ],
+          piecesCount: 0
+        }
+      ]
+    }
+  ]
 };
 
 // Read functions
@@ -101,6 +102,6 @@ export const buildAtom = atom((get) => {
     statNotes: get(statNotesAtom),
     talentNotes: get(talentNotesAtom),
     weaponNotes: get(weaponNotesAtom),
-    artifactNotes: get(artifactNotesAtom),
+    artifactNotes: get(artifactNotesAtom)
   };
 });

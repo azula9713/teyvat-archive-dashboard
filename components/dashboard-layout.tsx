@@ -1,14 +1,15 @@
 "use client";
 
 import type { ReactNode } from "react";
+
 import { Header } from "@/components/header";
+import { Navigation } from "@/components/navigation";
 import {
   SidebarProvider,
   Sidebar,
   SidebarInset,
-  SidebarRail,
+  SidebarRail
 } from "@/components/ui/sidebar";
-import { Navigation } from "@/components/navigation";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -16,7 +17,7 @@ interface DashboardLayoutProps {
 
 export function DashboardLayout({ children }: Readonly<DashboardLayoutProps>) {
   return (
-    <div className="min-h-screen bg-background overflow-hidden max-w-svw">
+    <div className="bg-background min-h-screen max-w-svw overflow-hidden">
       <SidebarProvider>
         <Sidebar>
           <Navigation />

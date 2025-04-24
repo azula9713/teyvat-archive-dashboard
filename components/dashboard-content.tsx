@@ -1,18 +1,19 @@
 "use client";
 
+import { BarChart3, FileText, Users } from "lucide-react";
+import Link from "next/link";
+
+import { RecentUpdates } from "@/components/recent-updates";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BarChart3, FileText, Users } from "lucide-react";
 import { sampleBuilds } from "@/data/sample-builds";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { RecentUpdates } from "@/components/recent-updates";
 
 export function DashboardContent() {
   const totalBuilds = sampleBuilds.length;
@@ -47,11 +48,11 @@ export function DashboardContent() {
                 <CardTitle className="text-sm font-medium">
                   Total Builds
                 </CardTitle>
-                <FileText className="h-4 w-4 text-muted-foreground" />
+                <FileText className="text-muted-foreground h-4 w-4" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{totalBuilds}</div>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-muted-foreground text-xs">
                   +2 from last month
                 </p>
               </CardContent>
@@ -61,11 +62,11 @@ export function DashboardContent() {
                 <CardTitle className="text-sm font-medium">
                   Characters Used
                 </CardTitle>
-                <Users className="h-4 w-4 text-muted-foreground" />
+                <Users className="text-muted-foreground h-4 w-4" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{charactersUsed}</div>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-muted-foreground text-xs">
                   +1 from last month
                 </p>
               </CardContent>
@@ -75,11 +76,11 @@ export function DashboardContent() {
                 <CardTitle className="text-sm font-medium">
                   Recent Updates
                 </CardTitle>
-                <BarChart3 className="h-4 w-4 text-muted-foreground" />
+                <BarChart3 className="text-muted-foreground h-4 w-4" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">5</div>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-muted-foreground text-xs">
                   +3 from last month
                 </p>
               </CardContent>
@@ -103,11 +104,11 @@ export function DashboardContent() {
                     >
                       <div>
                         <p className="font-medium">{build.buildName}</p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-muted-foreground text-sm">
                           {build.characterId}
                         </p>
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-muted-foreground text-sm">
                         {build.lastUpdate}
                       </div>
                     </div>
@@ -148,7 +149,7 @@ export function DashboardContent() {
                         className="flex items-center justify-between border-b pb-2"
                       >
                         <p className="font-medium">{character}</p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-muted-foreground text-sm">
                           {count} builds
                         </p>
                       </div>

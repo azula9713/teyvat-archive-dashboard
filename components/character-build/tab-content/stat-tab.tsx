@@ -1,10 +1,11 @@
 import { useAtom } from "jotai";
+
+import { mainStatsAtom, statNotesAtom, subStatsAtom } from "@/atoms/build-atom";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import MultipleSelector, { Option } from "@/components/ui/multi-select";
 import { TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import MultipleSelector, { Option } from "@/components/ui/multi-select";
-import { mainStatsAtom, statNotesAtom, subStatsAtom } from "@/atoms/build-atom";
 
 export default function StatTab() {
   const [mainStats, setMainStats] = useAtom(mainStatsAtom);
@@ -16,6 +17,7 @@ export default function StatTab() {
     { label: "ER%", value: "ER%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" }
   ];
 
   const gobletOptions: Option[] = [
@@ -29,6 +31,7 @@ export default function StatTab() {
     { label: "ATK%", value: "ATK%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" }
   ];
 
   const circletOptions: Option[] = [
@@ -38,12 +41,23 @@ export default function StatTab() {
     { label: "ATK%", value: "ATK%" },
     { label: "HP%", value: "HP%" },
     { label: "DEF%", value: "DEF%" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" }
+  ];
+
+  const subStatOptions: Option[] = [
+    { label: "CRIT Rate", value: "CRIT Rate" },
+    { label: "CRIT DMG", value: "CRIT DMG" },
+    { label: "ATK%", value: "ATK%" },
+    { label: "HP%", value: "HP%" },
+    { label: "DEF%", value: "DEF%" },
+    { label: "ER%", value: "ER%" },
+    { label: "Elemental Mastery", value: "Elemental Mastery" }
   ];
 
   const handleMainStatChange = (field: string, value: string) => {
     setMainStats({
       ...mainStats,
-      [field]: value.split(",").map((stat) => stat.trim()),
+      [field]: value.split(",").map((stat) => stat.trim())
     });
   };
 
@@ -52,7 +66,7 @@ export default function StatTab() {
   };
 
   return (
-    <TabsContent value="stats" className="space-y-4 mt-6">
+    <TabsContent value="stats" className="mt-6 space-y-4">
       <Card className="p-6">
         <div className="space-y-6">
           <div className="space-y-2">
@@ -64,7 +78,7 @@ export default function StatTab() {
               value={
                 mainStats.sands.map((stat) => ({
                   label: stat,
-                  value: stat,
+                  value: stat
                 })) ?? []
               }
               onChange={(selectedOptions) => {
@@ -74,7 +88,7 @@ export default function StatTab() {
                 handleMainStatChange("sands", selectedValues.join(", "));
               }}
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               Separate multiple options with commas
             </p>
           </div>
@@ -87,7 +101,7 @@ export default function StatTab() {
               value={
                 mainStats.goblet.map((stat) => ({
                   label: stat,
-                  value: stat,
+                  value: stat
                 })) ?? []
               }
               onChange={(selectedOptions) => {
@@ -97,7 +111,7 @@ export default function StatTab() {
                 handleMainStatChange("goblet", selectedValues.join(", "));
               }}
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               Separate multiple options with commas
             </p>
           </div>
@@ -110,7 +124,7 @@ export default function StatTab() {
               value={
                 mainStats.circlet.map((stat) => ({
                   label: stat,
-                  value: stat,
+                  value: stat
                 })) ?? []
               }
               onChange={(selectedOptions) => {
@@ -120,7 +134,7 @@ export default function StatTab() {
                 handleMainStatChange("circlet", selectedValues.join(", "));
               }}
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               Separate multiple options with commas
             </p>
           </div>
@@ -128,12 +142,12 @@ export default function StatTab() {
           <div className="space-y-2">
             <Label htmlFor="subStats">Substats Priority</Label>
             <MultipleSelector
-              defaultOptions={sandsOptions}
+              defaultOptions={subStatOptions}
               placeholder="eg: CRIT Rate, CRIT DMG"
               value={
                 subStats.map((stat) => ({
                   label: stat,
-                  value: stat,
+                  value: stat
                 })) ?? []
               }
               onChange={(selectedOptions) => {
@@ -143,7 +157,7 @@ export default function StatTab() {
                 handleSubStatsChange(selectedValues.join(", "));
               }}
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               List in order of priority, separated by commas
             </p>
           </div>

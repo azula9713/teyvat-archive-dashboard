@@ -5,14 +5,14 @@ import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true
   },
   images: {
-    unoptimized: true,
-  },
+    unoptimized: true
+  }
 };
 
 if (process.env.NODE_ENV === "development") {

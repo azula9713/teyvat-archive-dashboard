@@ -1,28 +1,34 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { formatDistanceToNow } from "date-fns"
-import { Badge } from "@/components/ui/badge"
-import { sampleUpdates } from "@/data/sample-updates"
-import type { Update } from "@/types/update"
+import { formatDistanceToNow } from "date-fns";
+import { useState, useEffect } from "react";
+
+import { Badge } from "@/components/ui/badge";
+import { sampleUpdates } from "@/data/sample-updates";
+import type { Update } from "@/types/update";
 
 interface UpdatesListProps {
-  limit?: number
+  limit?: number;
 }
 
 export function UpdatesList({ limit }: UpdatesListProps) {
-  const [updates, setUpdates] = useState<Update[]>([])
+  const [updates, setUpdates] = useState<Update[]>([]);
 
   useEffect(() => {
     // In a real app, this would fetch from an API
     const sortedUpdates = [...sampleUpdates].sort(
-      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    )
-    setUpdates(limit ? sortedUpdates.slice(0, limit) : sortedUpdates)
-  }, [limit])
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+    setUpdates(limit ? sortedUpdates.slice(0, limit) : sortedUpdates);
+  }, [limit]);
 
   if (updates.length === 0) {
-    return <p className="text-center text-muted-foreground py-4">No updates found.</p>
+    return (
+      <p className="text-muted-foreground py-4 text-center">
+        No updates found.
+      </p>
+    );
   }
 
   return (
@@ -32,10 +38,14 @@ export function UpdatesList({ limit }: UpdatesListProps) {
           <div className="flex items-start justify-between">
             <div>
               <p className="font-medium">{update.description}</p>
-              <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
+              <div className="text-muted-foreground mt-1 flex items-center gap-2 text-sm">
                 <span>By {update.author}</span>
                 <span>•</span>
-                <span>{formatDistanceToNow(new Date(update.createdAt), { addSuffix: true })}</span>
+                <span>
+                  {formatDistanceToNow(new Date(update.createdAt), {
+                    addSuffix: true
+                  })}
+                </span>
               </div>
             </div>
             {update.version && (
@@ -47,5 +57,5 @@ export function UpdatesList({ limit }: UpdatesListProps) {
         </div>
       ))}
     </div>
-  )
+  );
 }

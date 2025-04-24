@@ -1,7 +1,9 @@
-import { TabsList, TabsTrigger } from "../ui/tabs";
-import { buildAtom } from "@/atoms/build-atom";
 import { useAtomValue } from "jotai";
+
+import { buildAtom } from "@/atoms/build-atom";
 import isStageEnabled from "@/lib/build-state-machine";
+
+import { TabsList, TabsTrigger } from "../ui/tabs";
 
 type Props = {
   itemList: {

@@ -1,32 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ForgotPasswordForm } from "@/components/auth/forgot-password-form";
+
+import { LoginForm } from "@/components/auth/login-form";
 
 export const metadata: Metadata = {
-  title: "Forgot Password | Teyvat Archive Admin",
-  description: "Reset your password for the Teyvat Archive Admin",
+  title: "Login | Teyvat Archive Admin",
+  description: "Login to access the Teyvat Archive Admin"
 };
 
-export default function ForgotPasswordPage() {
+export default function LoginPage() {
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">
-            Forgot password
+            Welcome back
           </h1>
-          <p className="text-sm text-muted-foreground">
-            Enter your email address and we'll send you a link to reset your
-            password
+          <p className="text-muted-foreground text-sm">
+            Enter your credentials to access your account
           </p>
         </div>
-        <ForgotPasswordForm />
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <LoginForm />
+        <p className="text-muted-foreground px-8 text-center text-sm">
           <Link
-            href="/auth/login"
+            href="/auth/forgot-password"
             className="hover:text-brand underline underline-offset-4"
           >
-            Back to login
+            Forgot your password?
           </Link>
         </p>
       </div>

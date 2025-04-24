@@ -16,8 +16,8 @@ export const characters = [
   { id: "fischl", name: "Fischl" },
   { id: "sucrose", name: "Sucrose" },
   { id: "beidou", name: "Beidou" },
-  { id: "ningguang", name: "Ningguang" },
-]
+  { id: "ningguang", name: "Ningguang" }
+];
 
 export const weapons = [
   { id: "staff-of-homa", name: "Staff of Homa", type: "polearm" },
@@ -30,9 +30,17 @@ export const weapons = [
   { id: "aquila-favonia", name: "Aquila Favonia", type: "sword" },
   { id: "wolf's-gravestone", name: "Wolf's Gravestone", type: "claymore" },
   { id: "serpent-spine", name: "Serpent Spine", type: "claymore" },
-  { id: "lost-prayer", name: "Lost Prayer to the Sacred Winds", type: "catalyst" },
-  { id: "a-thousand-floating-dreams", name: "A Thousand Floating Dreams", type: "catalyst" },
-]
+  {
+    id: "lost-prayer",
+    name: "Lost Prayer to the Sacred Winds",
+    type: "catalyst"
+  },
+  {
+    id: "a-thousand-floating-dreams",
+    name: "A Thousand Floating Dreams",
+    type: "catalyst"
+  }
+];
 
 export const artifactSets = [
   { id: "emblem-of-severed-fate", name: "Emblem of Severed Fate" },
@@ -46,5 +54,5 @@ export const artifactSets = [
   { id: "tenacity-of-the-millelith", name: "Tenacity of the Millelith" },
   { id: "shimenawas-reminiscence", name: "Shimenawa's Reminiscence" },
   { id: "deepwood-memories", name: "Deepwood Memories" },
-  { id: "gilded-dreams", name: "Gilded Dreams" },
-]
+  { id: "gilded-dreams", name: "Gilded Dreams" }
+];

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+
 import { ResetPasswordForm } from "@/components/auth/reset-password-form";
 
 export const metadata: Metadata = {
   title: "Reset Password | Teyvat Archive Admin",
-  description: "Create a new password for your account",
+  description: "Create a new password for your account"
 };
 
 export default function ResetPasswordPage() {
@@ -14,7 +15,7 @@ export default function ResetPasswordPage() {
           <h1 className="text-2xl font-semibold tracking-tight">
             Reset password
           </h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Create a new password for your account
           </p>
         </div>
