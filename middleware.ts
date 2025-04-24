@@ -1,40 +1,20 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
+import { updateSession } from "@/utils/supabase/middleware";
 
-// Add paths that don't require authentication
-const publicPaths = ["/auth/login", "/auth/register", "/auth/forgot-password"];
-
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Check if the path is public
-  if (publicPaths.includes(pathname)) {
-    return NextResponse.next();
-  }
-
-  // Get the token from cookies
-  const token = request.cookies.get("auth_token")?.value;
-
-  // If there's no token, redirect to login with the original path
-  if (!token) {
-    const url = new URL("/auth/login", request.url);
-    url.searchParams.set("from", pathname);
-    return NextResponse.redirect(url);
-  }
-
-  return NextResponse.next();
+export async function middleware(request: NextRequest) {
+  return await updateSession(request);
 }
 
-// Configure which paths the middleware should run on
 export const config = {
   matcher: [
     /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
+     * Match all request paths except:
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
+     * Feel free to modify this pattern to include more paths.
      */
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

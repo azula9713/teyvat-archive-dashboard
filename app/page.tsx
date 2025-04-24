@@ -1,14 +1,7 @@
 "use client";
 
-import { DashboardLayout } from "@/components/dashboard-layout";
-import { DashboardContent } from "@/components/dashboard-content";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  // const router = useRouter();
-
-  return (
-    <DashboardLayout>
-      <DashboardContent />
-    </DashboardLayout>
-  );
+export default async function Home() {
+  return redirect("/dashboard");
 }

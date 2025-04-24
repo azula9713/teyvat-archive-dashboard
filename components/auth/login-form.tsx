@@ -17,10 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
-import { loginEmailPassword } from "@/services/apis/auth-api";
-import { IUser } from "@/types/user";
-
+import { signInAction } from "@/app/actions";
 const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
@@ -31,9 +28,6 @@ const formSchema = z.object({
 });
 
 export function LoginForm() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,25 +43,10 @@ export function LoginForm() {
     setError(null);
 
     try {
-      const response: IUser = await loginEmailPassword(
-        values.email,
-        values.password
-      );
-
-      // Store the token in cookies
-      document.cookie = `auth_token=${response.session.accessToken}; path=/; max-age=86400`; // 24 hours
-
-      toast({
-        title: "Login successful",
-        description: "Welcome back to Teyvat Archive Admin!",
-      });
-
-      // Redirect to the original requested page or dashboard
-      const from = searchParams.get("from") ?? "/";
-      router.push(from);
+      await signInAction(values.email, values.password);
     } catch (error: any) {
       console.log("Login error:", error);
-      setError(error.response.data.message);
+      // setError(error.response.data.message);
     } finally {
       setIsLoading(false);
     }
